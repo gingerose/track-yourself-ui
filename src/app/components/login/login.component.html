@@ -1,0 +1,56 @@
+<body>
+<div class="signup">
+  <div class="left"></div>
+  <div class="form-container">
+    <div class="inner">
+      <div class="logo">
+        <img src="assets/logo.png">
+      </div>
+      <div [formGroup]="form">
+        <p class="h1">Log in</p>
+        <nz-form-control
+          [nzValidateStatus]="form.controls['login'].touched &&  form.controls['login'].errors ? 'error' : ''  "
+          nzErrorTip="login error"
+        >
+          <input
+            nz-input
+            placeholder="E-mail"
+            formControlName="login"
+          />
+        </nz-form-control>
+        <nz-form-control
+          [nzValidateStatus]="form.controls['password'].touched &&  form.controls['password'].errors ? 'error' : ''  "
+          nzErrorTip="password must be more then 8 characters"
+        >
+          <input
+            nz-input
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
+        </nz-form-control>
+
+        <button
+          class="signup-page__controller"
+          nz-button
+          nzType="primary"
+          (click)="onLoginClick()"
+        >
+          Log in
+        </button>
+        <p *ngIf="error">
+          <nz-alert nzType="error" class="error" nzMessage="{{message}}" nzShowIcon></nz-alert>
+        </p>
+        <div class="signup-page__link">
+          <p style="display: inline;">Don’t have an account? </p>
+          <a style="display: inline;" routerLink="/sign-up">Sign up</a><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="picture">
+    <img src="assets/sign-up.png">
+  </div>
+  <div class="right"></div>
+</div>
+</body>

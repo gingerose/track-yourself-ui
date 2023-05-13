@@ -1,0 +1,72 @@
+<body>
+<div class="signup">
+  <div class="left"></div>
+  <div class="form-container">
+    <div class="inner">
+      <div class="logo">
+        <img src="assets/logo.png">
+      </div>
+      <div [formGroup]="form">
+        <p class="h1">Sign up</p>
+        <nz-form-control
+          [nzValidateStatus]="form.controls['login'].touched &&  form.controls['login'].errors ? 'error' : ''  "
+          nzErrorTip="login error"
+        >
+          <input
+            nz-input
+            placeholder="E-mail"
+            formControlName="login"
+          />
+        </nz-form-control>
+        <input
+          nz-input
+          placeholder="User Name"
+          formControlName="username"
+        />
+        <nz-form-control
+          [nzValidateStatus]="form.controls['password'].touched &&  form.controls['password'].errors ? 'error' : ''  "
+          nzErrorTip="password must be more then 8 characters"
+        >
+          <input
+            nz-input
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
+        </nz-form-control>
+        <nz-form-control
+          [nzValidateStatus]="form.controls['confirmPassword'].touched &&  form.controls['confirmPassword'].errors ? 'error' : ''  "
+          nzErrorTip="confirm password must match"
+        >
+          <input
+            nz-input
+            placeholder="Confirm Password"
+            type="password"
+            formControlName="confirmPassword"
+          />
+        </nz-form-control>
+
+        <button
+          class="signup-page__controller"
+          nz-button
+          nzType="primary"
+          (click)="onSignUpClick()"
+        >
+          Sign up
+        </button>
+        <p *ngIf="error">
+          <nz-alert nzType="error" class="error" nzMessage="{{message}}" nzShowIcon></nz-alert>
+        </p>
+        <div class="signup-page__link">
+          <p style="display: inline;">Already have an account? </p>
+          <a style="display: inline;" routerLink="/login">Log in</a><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="picture">
+    <img src="assets/sign-up.png">
+  </div>
+  <div class="right"></div>
+</div>
+</body>

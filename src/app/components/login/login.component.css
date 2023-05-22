@@ -47,10 +47,7 @@ p {
 }
 
 .picture img {
-  max-width: 100%;
-  height: auto;
-  width: auto;
-  object-fit: cover;
+  max-width: 615px;
 }
 
 .right {

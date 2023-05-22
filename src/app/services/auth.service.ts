@@ -24,6 +24,7 @@ export class AuthService {
     this.username = <string> localStorage.getItem(this.USER_USERNAME);
     this.login = <string> localStorage.getItem(this.USER_LOGIN);
     this.pictureId = <string> localStorage.getItem(this.USER_PICTURE_ID);
+    this.token = <string> localStorage.getItem(this.TOKEN_KEY)
   }
 
   public loadToken(): void{
@@ -51,6 +52,17 @@ export class AuthService {
     localStorage.setItem(this.USER_USERNAME, this.username);
     localStorage.setItem(this.USER_LOGIN, this.login);
     localStorage.setItem(this.USER_PICTURE_ID, this.pictureId);
+  }
+
+  public getUser(): User {
+    return {
+      userId: +this.id,
+      username: this.username,
+      login: this.login,
+      picture: this.pictureId,
+      password: "",
+      token: this.token
+    };
   }
 
   public setToken(token: string): void{

@@ -40,16 +40,14 @@ p {
   align-items: center;
   width: 40%;
   height: 93%;
-  background-size: cover;
+  background-size: cover; /* Заполняет всю область, сохраняя пропорции */
   background-position: center;
   background-repeat: no-repeat;
 }
 
+
 .picture img {
-  max-width: 100%;
-  height: auto;
-  width: auto;
-  object-fit: cover;
+  max-width: 615px;
 }
 
 .right {

@@ -13,6 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.auth.loadUserData()
     if(req.url.includes(`${environment.serverUrl}`)){
       req = req.clone({
         setHeaders: {
@@ -22,6 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
         },
       });
     }
+    console.log(req)
     return next.handle(req);
   }
 

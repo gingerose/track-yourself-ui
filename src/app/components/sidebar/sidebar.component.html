@@ -1,0 +1,13 @@
+<div class="navigation">
+  <advanced-image [cldImg]="img" class="img"></advanced-image>
+  <span class="userName">{{user.username}}</span>
+  <br>
+  <ul>
+    <li *ngFor="let link of links">
+      <a routerLink="{{link.link}}">
+        <span class="icon"><i nz-icon nzType="{{link.icon}}" nzTheme="outline"></i></span>
+        <span class="title">{{link.name}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

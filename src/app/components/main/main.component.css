@@ -1,0 +1,43 @@
+.logo {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transform: rotate(-180deg);
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right {
+  height: 100%;
+  width: 10%;
+  background: linear-gradient(0deg, #DCF8C9 -10.98%, #FBFADB 91.91%, #FDFADC 100%);
+  transform: rotate(-180deg);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.main {
+  position: absolute;
+  top: 5%;
+  left: 30%; /* ширина .sidebar */
+  right: 15%; /* ширина .right */
+  bottom: 0;
+  overflow: auto;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* остальные стили для боковой панели */
+}
+
+.main {
+  overflow: hidden;
+}
+

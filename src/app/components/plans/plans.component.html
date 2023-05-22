@@ -1,0 +1,95 @@
+<div class="search">
+  <div>
+    <span class="search-icon" nz-icon nzType="search"></span>
+    <input type="text" [(ngModel)]="findPlansRequest.description" (keydown.enter)="submitSearch()">
+  </div>
+  <div>
+    <input type="date" [ngModel]="findPlansRequest.date" (ngModelChange)="findPlansRequest.date = $event" (ngModelChange)="submitSearch()">
+    <select [(ngModel)]="findPlansRequest.status" (change)="submitSearch()">
+      <option class="option" value="">Select the status</option>
+      <option value="DONE">Done</option>
+      <option value="IN_PROGRESS">In progress</option>
+      <option value="NOT_ACTUAL">Not actual</option>
+      <option value="DELAY">Delay</option>
+      <option value="EMPTY">Empty</option>
+    </select>
+  </div>
+</div>
+
+<div class="scroll">
+  <div class="color-legend">
+    <div class="legend-item">
+      <div class="color-option-green"></div>
+      <span class="legend-label">- Task done</span>
+    </div>
+    <div class="legend-item">
+      <div class="color-option-yellow"></div>
+      <span class="legend-label">- Task isn’t actual</span>
+    </div>
+    <div class="legend-item">
+      <div class="color-option-red"></div>
+      <span class="legend-label">- Task in progress</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-label">➞ - Task rescheduled</span>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th class="delete"></th>
+      <th *ngFor="let day of weekDates">{{ day | date: 'dd.MM' }}</th>
+    </tr>
+    <tr>
+      <th class="delete"></th>
+      <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--  <tr>-->
+    <!--    <td *ngFor="let day of weekDates">{{ day.toDateString() }}</td></tr>-->
+    <tr *ngFor="let plan of plans">
+      <td class="delete">
+        <span class="test" nz-icon nzType="close-square" nzTheme="outline" (click)="confirmDelete(plan)"></span>
+      </td>
+      <ng-container *ngFor="let day of daysOfWeek; let i = index">
+        <td [ngClass]="getStatusColor(plan, i + 1)" (click)="showColorPicker($event, plan, i + 1)">
+          <span class="delay" *ngIf="getStatusColor(plan, i + 1) === 'blue'">➞</span>
+        </td>
+      </ng-container>
+      <td class="description">
+        <span *ngIf="!isEditing(plan)" (click)="startEditing(plan)">{{ plan.description }}</span>
+        <input *ngIf="isEditing(plan)" [(ngModel)]="editedDescription" (blur)="stopEditing(plan)"
+               (keydown.enter)="stopEditing(plan)"/>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button class="add" (click)="openPopup()">
+    <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+  </button>
+</div>
+
+<div class="color-picker" *ngIf="showPicker" [style.top.px]="pickerTop" [style.left.px]="pickerLeft">
+  <div class="color-option-green" (click)="changeStatusAndColor('DONE')"></div>
+  <div class="color-option-yellow" (click)="changeStatusAndColor('IN_PROGRESS')"></div>
+  <div class="color-option-red" (click)="changeStatusAndColor('NOT_ACTUAL')"></div>
+  <div class="color-option-blue" (click)="changeStatusAndColor('DELAY')">
+    <span class="arrow">➞</span>
+  </div>
+</div>
+
+<div class="popup" *ngIf="showPopup">
+  <input type="date" [ngModel]="dateToString(newPlan.date)" (ngModelChange)="onDateChange($event)">
+  <input type="text" [(ngModel)]="newPlan.description">
+  <button class="add-button" (click)="addPlan()">Ок</button>
+  <button class="add-button" (click)="cancel()">Отмена</button>
+</div>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <p>Do you really want to delete this plan?</p>
+  <button class="delete-button" (click)="deletePlan()">Delete</button>
+  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+</div>

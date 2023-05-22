@@ -9,15 +9,20 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzAlertModule} from "ng-zorro-antd/alert";
-import {TestComponent} from "./components/test/test.component";
+import {PlansComponent} from "./components/plans/plans.component";
 import {LoginComponent} from "./components/login/login.component";
+import {CloudinaryComponent} from "./components/cloudinary/cloudinary.component";
+import {CloudinaryModule} from "@cloudinary/ng";
+import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {MainComponent} from "./components/main/main.component";
+import {AuthInterceptor} from "./services/interceptors/http-interceptors/auth-interceptor";
 
 registerLocaleData(en);
 
@@ -25,8 +30,11 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     SignUpComponent,
-    TestComponent,
-    LoginComponent
+    PlansComponent,
+    LoginComponent,
+    CloudinaryComponent,
+    SidebarComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +48,14 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzAlertModule,
+    CloudinaryModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     { provide: NZ_I18N, useValue: en_US }
   ],
   bootstrap: [AppComponent]

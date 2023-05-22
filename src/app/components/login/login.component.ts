@@ -46,7 +46,7 @@ export class LoginComponent {
         },
         next: (user: User): void => {
           this.auth.setUser(user);
-          this.router.navigate(["/test"]);
+          this.router.navigate(["/user/plans"]);
         },
       });
     } else {

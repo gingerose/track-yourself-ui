@@ -47,8 +47,6 @@
     </tr>
     </thead>
     <tbody>
-    <!--  <tr>-->
-    <!--    <td *ngFor="let day of weekDates">{{ day.toDateString() }}</td></tr>-->
     <tr *ngFor="let plan of plans">
       <td class="delete">
         <span class="test" nz-icon nzType="close-square" nzTheme="outline" (click)="confirmDelete(plan)"></span>

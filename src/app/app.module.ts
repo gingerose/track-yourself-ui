@@ -23,6 +23,8 @@ import {CloudinaryModule} from "@cloudinary/ng";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {MainComponent} from "./components/main/main.component";
 import {AuthInterceptor} from "./services/interceptors/http-interceptors/auth-interceptor";
+import {CollectionsComponent} from "./components/collections/collections.component";
+import {CollectionItemsComponent} from "./components/collection-items/collection-items.component";
 
 registerLocaleData(en);
 
@@ -34,7 +36,9 @@ registerLocaleData(en);
     LoginComponent,
     CloudinaryComponent,
     SidebarComponent,
-    MainComponent
+    MainComponent,
+    CollectionsComponent,
+    CollectionItemsComponent
   ],
   imports: [
     BrowserModule,

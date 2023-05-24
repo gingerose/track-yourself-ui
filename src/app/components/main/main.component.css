@@ -23,8 +23,8 @@
 .main {
   position: absolute;
   top: 5%;
-  left: 30%; /* ширина .sidebar */
-  right: 15%; /* ширина .right */
+  left: 27%; /* ширина .sidebar */
+  right: 13%; /* ширина .right */
   bottom: 0;
   overflow: auto;
 }

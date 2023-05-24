@@ -1,0 +1,35 @@
+<p class="h1">Collections</p>
+<div class="search">
+  <div>
+    <span class="search-icon" nz-icon nzType="search"></span>
+    <input type="text" [(ngModel)]="findCollectionItemsRequest.description" (keydown.enter)="submitSearch()">
+  </div>
+  <div>
+    <select [(ngModel)]="findCollectionItemsRequest.status" (change)="submitSearch()">
+      <option class="option" value="">Select the status</option>
+      <option value="DONE">Done</option>
+      <option value="EMPTY">Empty</option>
+    </select>
+  </div>
+</div>
+
+<div class="block">
+  <div class="title" *ngIf="!isTitleEdit" (click)="toggleTitleEdit()">{{ collection.title }}</div>
+  <input class="title" type="text" [(ngModel)]="newTitle" *ngIf="isTitleEdit" (keydown.enter)="updateTitle()"
+         (keydown.escape)="cancelTitleEdit()">
+  <div *ngFor="let item of items" class="item-block">
+    <div class="status-icon" (click)="toggleStatus(item)">
+      <span nz-icon nzType="check" nzTheme="outline" *ngIf="item.status === 'DONE'"></span>
+    </div>
+    <div class="description">
+      <span *ngIf="!isEditing(item)" (click)="startEditing(item)">{{ item.description }}</span>
+      <input *ngIf="isEditing(item)" [(ngModel)]="editedItem.description" (blur)="stopEditing(item)"
+             (keydown.enter)="stopEditing(item)"/>
+    </div>
+    <span class="delete" nz-icon nzType="close-square" nzTheme="outline" (click)="deleteCollectionItem(item)"></span>
+  </div>
+</div>
+
+<button class="add" (click)="addNewItem()">
+  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+</button>

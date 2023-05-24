@@ -1,0 +1,259 @@
+.collection-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #396C1D;
+  max-height: 65vh;
+  overflow-y: auto;
+  width: 92%;
+  margin: auto;
+}
+
+.collection-block {
+  width: calc(25% - 40px);
+  margin-bottom: 40px;
+  height: 100px;
+  background: #FCFFFA;
+  box-shadow: 5px 5px 15px #D5E8BA;
+  border-radius: 7px;
+  margin-right: 40px; /* Добавляем правый отступ между элементами */
+}
+
+.collection-title {
+  display: flex;
+  justify-content: center; /* Выравнивание по горизонтали */
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  background: #B3E2B1;
+  border-radius: 7px;
+  height: 30px;
+}
+
+.collection {
+  cursor: pointer;
+}
+
+.collection {
+  flex-grow: 1; /* Take up remaining space */
+  text-align: center; /* Center align the text */
+}
+
+.delete {
+  margin-left: auto; /* Push the element to the right */
+  padding-right: 7px;
+}
+
+
+.delete-popup {
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.delete-popup p {
+  margin-bottom: 10px;
+  color: #396C1D;
+}
+
+
+.cancel-button {
+  background: #B3E2B1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.cancel-button {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.cancel-button:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+.delete-button  {
+  margin-left: 15%;
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(249, 145, 122, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.delete-button:hover {
+  background-color: #F9917A;
+  cursor: pointer;
+  color: white;
+}
+
+
+.delete:hover{
+  cursor: pointer;
+}
+
+.collection-title span{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.collection-status {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.amount {
+  margin-left: 35%;
+  font-weight: 500;
+}
+
+
+.collection-grid::-webkit-scrollbar {
+  margin-left: 15px;
+  width: 8px;
+}
+
+.collection-grid::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.collection-grid::-webkit-scrollbar-thumb {
+  background-color: #E4F6CB;
+}
+
+.collection-grid::-webkit-scrollbar-thumb:hover {
+  background-color: #E4F6CB;
+}
+
+.collection-grid::-webkit-scrollbar-thumb:active {
+  background-color: #B3E2B1;
+}
+
+.collection-grid::-webkit-scrollbar-thumb:vertical {
+  border-radius: 4px;
+}
+
+.collection-grid::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 4px;
+}
+
+.h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 150%;
+  color: #396C1D;
+  margin: 0;
+}
+
+.search {
+  margin-bottom: 5%;
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E4F6CB;
+  box-shadow: 5px 5px 15px #D0E1B7;
+  height: 50px;
+  color: #396C1D;
+}
+
+.search > div {
+  flex: 1;
+  text-align: center;
+}
+
+.search > div:first-child {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-right: 2px solid rgba(57, 108, 29, 0.8);
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.search-icon{
+  color: #396C1D;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.search > div:last-child {
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.search input[type="text"]{
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+.search input[type="date"] {
+  color: #396C1D;
+  background: transparent;
+  border: none;
+  margin-right: 10%;
+  margin-left: 2%;
+}
+.search > div:last-child {
+  display: flex;
+  align-items: center;
+}
+
+
+button.add-button {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+button.add-button:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+
+.add {
+  background: none;
+  border: none;
+  left: 85%;
+  top: 92%;
+  position: fixed;
+}
+
+.add span {
+  font-size: 40px;
+  color: #396C1D;
+  border-radius: 50%;
+}
+
+.add span:hover {
+  cursor: pointer;
+  background: #B3E2B1;
+}

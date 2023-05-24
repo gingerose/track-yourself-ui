@@ -1,0 +1,241 @@
+
+.search {
+  margin: 3% 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E4F6CB;
+  box-shadow: 5px 5px 15px #D0E1B7;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.search > div {
+  flex: 1;
+  text-align: center;
+}
+
+.search > div:first-child {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-right: 2px solid rgba(57, 108, 29, 0.8);
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.search-icon {
+  color: #396C1D;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.search > div:last-child {
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.search input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+.search input[type="date"] {
+  color: #396C1D;
+  background: transparent;
+  border: none;
+}
+
+.search > div:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.search select {
+  margin-left: 10%;
+  border-radius: 5px;
+  width: 200px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: #396C1D;
+}
+
+.search select:hover {
+  cursor: pointer;
+}
+
+.search select option {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #396C1D;
+  font-size: 14px;
+}
+
+.search select option:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+
+.option:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+
+.h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 150%;
+  color: #396C1D;
+  margin: 0;
+}
+
+.block {
+  margin-left: 5%;
+  margin-top: 4%;
+  background: #FCFFFA;
+  box-shadow: 5px 5px 15px #D5E8BA;
+  border-radius: 7px;
+  width: 80%;
+  max-height: 70%;
+  height: 70%;
+  color: #396C1D;
+  overflow: auto; /* Add this line to enable scrollbar */
+}
+
+
+.block::-webkit-scrollbar {
+  width: 8px;
+}
+
+.block::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.block::-webkit-scrollbar-thumb {
+  background-color: #E4F6CB;
+}
+
+.block::-webkit-scrollbar-thumb:hover {
+  background-color: #E4F6CB;
+}
+
+.block::-webkit-scrollbar-thumb:active {
+  background-color: #B3E2B1;
+}
+
+.block::-webkit-scrollbar-thumb:vertical {
+  border-radius: 4px;
+}
+
+.block::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 4px;
+}
+
+.title {
+  background: #B3E2B1;
+  border-radius: 7px;
+  height: 40px;
+  text-align: center;
+  font-size: 25px;
+  font-style: italic;
+}
+
+.item-block {
+  padding: 20px 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.status-icon {
+  width: 27px;
+  height: 27px;
+  margin-right: 10px;
+  background: #E4F6CB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.status-icon.checked {
+  background: #B3E2B1;
+}
+
+.status-icon span {
+  font-size: 20px;
+  color: #396C1D;
+}
+
+.status-icon:hover {
+  cursor: pointer;
+}
+
+.description {
+  flex-grow: 1;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.description::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  border-bottom: 2px dashed #B3E2B1;
+}
+
+
+button.add-button {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+button.add-button:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+
+.add {
+  background: none;
+  border: none;
+  position: relative;
+  left: 90%;
+}
+
+.add span {
+  font-size: 40px;
+  color: #396C1D;
+  border-radius: 50%;
+}
+
+.add span:hover {
+  cursor: pointer;
+  background: #B3E2B1;
+}
+
+input.title {
+  width: 100%;
+}
+
+.delete {
+  font-size: 17px;
+}
+
+.delete:hover{
+  cursor: pointer;
+  background: #B3E2B1;
+}

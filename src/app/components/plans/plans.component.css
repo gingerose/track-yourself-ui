@@ -249,7 +249,7 @@ button.add-button:hover {
 }
 
 .scroll::-webkit-scrollbar-thumb:active {
-  background-color: forestgreen;
+  background-color: #B3E2B1;
 }
 
 .scroll::-webkit-scrollbar-thumb:vertical {

@@ -7,6 +7,9 @@ export const appLinks= {
   signup: `${environment.serverUrl}/api/auth/signup`,
   plans: `${environment.serverUrl}/api/users/plans`,
   getPlans: `${environment.serverUrl}/api/users/plans/search`,
+  getCollections: `${environment.serverUrl}/api/users/collections/search`,
+  collections: `${environment.serverUrl}/api/users/collections`,
+  collectionItems: `${environment.serverUrl}/api/users/collections/`,
   uploadImage:`https://api.cloudinary.com/v1_1/dir5cpatv/image/upload`,
 }
 export const cld = new Cloudinary({

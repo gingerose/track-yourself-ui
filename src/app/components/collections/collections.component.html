@@ -1,0 +1,34 @@
+<p class="h1">Collections</p>
+<div class="search">
+  <div>
+    <span class="search-icon" nz-icon nzType="search"></span>
+    <input type="text" [(ngModel)]="findCollectionsRequest.title" (keydown.enter)="submitSearch()">
+  </div>
+  <div>
+    From:  <input type="date" [ngModel]="findCollectionsRequest.firstDate" (ngModelChange)="findCollectionsRequest.firstDate = $event" (ngModelChange)="submitSearch()">
+    To:  <input type="date" [ngModel]="findCollectionsRequest.secondDate" (ngModelChange)="findCollectionsRequest.secondDate = $event" (ngModelChange)="submitSearch()">
+  </div>
+</div>
+<div class="collection-grid">
+  <div *ngFor="let item of collections" class="collection-block">
+    <div class="collection-title">
+      <span class="collection" (click)="toCollection(item)">{{ item.title }}</span>
+      <span class="delete" nz-icon nzType="close-square" nzTheme="outline"  (click)="confirmDelete(item)"></span>
+    </div>
+    <div class="collection-status">
+      Done:
+      <div class="amount">
+        {{ item.doneAmount }} из {{ item.fullAmount }}
+      </div>
+    </div>
+  </div>
+</div>
+<button class="add" (click)="addCollection()">
+  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+</button>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <p>Do you really want to delete this collection?</p>
+  <button class="delete-button" (click)="deleteCollection()">Delete</button>
+  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+</div>

@@ -1,0 +1,52 @@
+<p class="h1">Habits</p>
+<div class="search">
+  <div>
+    <span class="search-icon" nz-icon nzType="search"></span>
+    <input type="text" [(ngModel)]="findHabitsRequest.title" (keydown.enter)="submitSearch()">
+  </div>
+  <div>
+    <div class="date-picker-container">
+      <nz-date-picker [(ngModel)]="selectedDate" (ngModelChange)="onDateChange($event)"></nz-date-picker>
+    </div>
+  </div>
+</div>
+<div class="habit-container">
+  <div *ngFor="let habit of habits" class="habit-card">
+    <div class="habit-calendar">
+      <div class="delete-wrapper">
+        <div class="month-year">
+          <span *ngIf="!isEditing(habit)" (click)="startEditing(habit)">{{ habit.title }}</span>
+          <input *ngIf="isEditing(habit)" [(ngModel)]="editedHabit.title" (blur)="stopEditing(habit)"
+                 (keydown.enter)="stopEditing(habit)"/>
+          <span class="delete" nz-icon nzType="close-square" nzTheme="outline" (click)="confirmDelete(habit)"></span>
+        </div>
+      </div>
+      <table class="calendar-table">
+        <tr>
+          <th *ngFor="let dayOfWeek of daysOfWeek">{{ dayOfWeek }}</th>
+        </tr>
+        <ng-container *ngFor="let week of calendar">
+          <tr>
+            <ng-container *ngFor="let day of week">
+              <td>
+                <div class="day" (click)="toggleStatus(habit, day)">
+                  <div class="day-number">{{ day.day }}</div>
+                  <mat-icon *ngIf="isHabitDone(habit, day)" class="check-icon">check</mat-icon>
+                </div>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>
+<button class="add" (click)="addHabit()">
+  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+</button>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <p>Do you really want to delete this collection?</p>
+  <button class="delete-button" (click)="deleteHabit()">Delete</button>
+  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+</div>

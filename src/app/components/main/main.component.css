@@ -22,7 +22,7 @@
 
 .main {
   position: absolute;
-  top: 5%;
+  top: 3%;
   left: 27%; /* ширина .sidebar */
   right: 13%; /* ширина .right */
   bottom: 0;

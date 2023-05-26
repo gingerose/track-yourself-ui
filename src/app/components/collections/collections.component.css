@@ -157,16 +157,15 @@
 
 .h1 {
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 40px;
-  line-height: 150%;
   color: #396C1D;
   margin: 0;
 }
 
 .search {
   margin-bottom: 5%;
-  margin-top: 3%;
+  margin-top: 2%;
   display: flex;
   align-items: center;
   justify-content: center;

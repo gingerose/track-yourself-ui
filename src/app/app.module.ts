@@ -25,6 +25,10 @@ import {MainComponent} from "./components/main/main.component";
 import {AuthInterceptor} from "./services/interceptors/http-interceptors/auth-interceptor";
 import {CollectionsComponent} from "./components/collections/collections.component";
 import {CollectionItemsComponent} from "./components/collection-items/collection-items.component";
+import {HabitsComponent} from "./components/habits/habits.component";
+import {NzCalendarModule} from "ng-zorro-antd/calendar";
+import { MatIconModule } from '@angular/material/icon';
+import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 
 registerLocaleData(en);
 
@@ -38,7 +42,8 @@ registerLocaleData(en);
     SidebarComponent,
     MainComponent,
     CollectionsComponent,
-    CollectionItemsComponent
+    CollectionItemsComponent,
+    HabitsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,9 @@ registerLocaleData(en);
     NzMenuModule,
     NzAlertModule,
     CloudinaryModule,
+    NzCalendarModule,
+    MatIconModule,
+    NzDatePickerModule
   ],
   providers: [
     {

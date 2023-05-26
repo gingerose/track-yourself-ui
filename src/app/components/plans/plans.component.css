@@ -2,6 +2,14 @@ table {
   margin-top: 5%;
   border-collapse: collapse;
 }
+.h1 {
+  font-style: normal;
+  font-weight: 550;
+  font-size: 40px;
+  line-height: 150%;
+  color: #396C1D;
+  margin-bottom: 2%;
+}
 
 th, td {
   width: 50px;
@@ -228,7 +236,7 @@ button.add-button:hover {
 
 
 .scroll {
-  height: 92%; /* Установите желаемую высоту */
+  height: 80%; /* Установите желаемую высоту */
   overflow-y: scroll;
 }
 

@@ -9,6 +9,7 @@ import {MainComponent} from "./components/main/main.component";
 import {CollectionsComponent} from "./components/collections/collections.component";
 import {CollectionItemsComponent} from "./components/collection-items/collection-items.component";
 import {HabitsComponent} from "./components/habits/habits.component";
+import {NotesComponent} from "./components/notes/notes.component";
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'collections', component: CollectionsComponent },
       { path: 'collections/:collectionId/item', component: CollectionItemsComponent },
       { path: 'habits', component: HabitsComponent },
+      { path: 'notes', component: NotesComponent },
     ]},
   { path: '', pathMatch: 'full', redirectTo: '/sign-up' },
 ];

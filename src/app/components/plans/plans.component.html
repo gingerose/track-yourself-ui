@@ -83,8 +83,8 @@
 <div class="popup" *ngIf="showPopup">
   <input type="date" [ngModel]="dateToString(newPlan.date)" (ngModelChange)="onDateChange($event)">
   <input type="text" [(ngModel)]="newPlan.description">
-  <button class="add-button" (click)="addPlan()">Ок</button>
-  <button class="add-button" (click)="cancel()">Отмена</button>
+  <button class="add-button" (click)="addPlan()">Оk</button>
+  <button class="add-button" (click)="cancel()">Cancel</button>
 </div>
 
 <div class="delete-popup" *ngIf="showDeletePopup">

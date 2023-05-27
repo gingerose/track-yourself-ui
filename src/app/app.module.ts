@@ -29,6 +29,7 @@ import {HabitsComponent} from "./components/habits/habits.component";
 import {NzCalendarModule} from "ng-zorro-antd/calendar";
 import { MatIconModule } from '@angular/material/icon';
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
+import {NotesComponent} from "./components/notes/notes.component";
 
 registerLocaleData(en);
 
@@ -43,7 +44,8 @@ registerLocaleData(en);
     MainComponent,
     CollectionsComponent,
     CollectionItemsComponent,
-    HabitsComponent
+    HabitsComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

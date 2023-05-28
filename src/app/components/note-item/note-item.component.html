@@ -1,0 +1,8 @@
+<p class="h1">Notes</p>
+<div class="note-block">
+  <div *ngIf="!isTitleEdit" (click)="toggleTitleEdit()"><h2>{{ note.title }}</h2></div>
+  <input class="title" type="text" [(ngModel)]="note.title" *ngIf="isTitleEdit" (keydown.enter)="updateNote()">
+  <div class="note-text-edit">
+    <textarea [(ngModel)]="note.text" (ngModelChange)="submitEdit()"></textarea>
+  </div>
+</div>

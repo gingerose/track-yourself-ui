@@ -20,18 +20,20 @@
   <div *ngFor="let category of categoryNotes">
     <div class="notes-container">
       <div class="category-title">
-      <h2>{{ category.title }}</h2>
-      <span nz-icon nzType="close-square" nzTheme="outline"  (click)="confirmDeleteCategory(category)"></span>
+        <div  *ngIf="!isCategoryEdit" (click)="toggleCategoryEdit(category)"><h2>{{ category.title }}</h2></div>
+        <input class="category-title" type="text" [(ngModel)]="newCategoryTitle" *ngIf="isCategoryEdit" (keydown.enter)="updateCategory(category)"
+               (keydown.escape)="cancelCategoryEdit()">
+        <span class="delete" nz-icon nzType="close-square" nzTheme="outline"  (click)="confirmDeleteCategory(category)"></span>
       </div>
       <div class="notes">
         <div *ngFor="let note of category.notes">
           <div class="note">
             <div class="title">
-              <h3>{{ note.title }}</h3>
+              <h3 (click)="goToNote(note)">{{ note.title }}</h3>
               <span class="delete" nz-icon nzType="close-square" nzTheme="outline"  (click)="confirmDeleteNote(note)"></span>
             </div>
             <p>{{ note.date | date }}</p>
-            <p>{{ note.text | slice:0:100 }}{{ note.text.length > 100 ? '...' : '' }}</p>
+            <p>{{ note.text | slice:0:20 }}{{ note.text.length > 20 ? '...' : '' }}</p>
           </div>
         </div>
       </div>
@@ -56,4 +58,10 @@
   </div>
   <button class="add-button" (click)="addNote()">Оk</button>
   <button class="add-button" (click)="cancel()">Cancel</button>
+</div>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <p>Do you really want to delete this category? All notes of this category will be deleted to.</p>
+  <button class="delete-button" (click)="deleteCategory()">Delete</button>
+  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
 </div>

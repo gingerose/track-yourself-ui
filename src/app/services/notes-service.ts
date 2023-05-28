@@ -60,6 +60,6 @@ export class NotesService {
   }
 
   public getNoteById(noteId: number): Observable<Note> {
-    return this.http.get<Note>(`${appLinks.notes}${noteId}`);
+    return this.http.get<Note>(`${appLinks.notes}/${noteId}`);
   }
 }

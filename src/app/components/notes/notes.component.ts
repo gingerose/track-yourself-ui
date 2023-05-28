@@ -42,6 +42,15 @@ export class NotesComponent {
     notes: []
   }
   selectedCategoryId: number = -1
+  showDeletePopup: boolean = false;
+  categoryToDelete: Category = {
+    userId: +this.authService.getUserId(),
+    categoryId: -1,
+    title: "",
+    notes: []
+  };
+  isCategoryEdit: boolean = false;
+  newCategoryTitle: string = "";
 
   constructor(private authService: AuthService, private noteService: NotesService, private router: Router) {
     authService.loadUserData()
@@ -135,7 +144,50 @@ export class NotesComponent {
     });
   }
 
-  confirmDeleteCategory(category: Category) {
-    
+  public confirmDeleteCategory(category: Category) {
+    this.categoryToDelete = category;
+    this.showDeletePopup = true;
+  }
+
+  public deleteCategory() {
+    const index = this.categoryNotes.indexOf(this.categoryToDelete);
+    const index2 = this.categories.indexOf(this.categoryToDelete);
+    if (index !== -1) {
+      this.categoryNotes.splice(index, 1);
+      this.categories.splice(index2, 1);
+      this.noteService.deleteCategory(this.categoryToDelete.categoryId).subscribe({
+        next: (): void => {
+        }
+      });
+    }
+    this.showDeletePopup = false;
+  }
+
+  public cancelDelete() {
+    this.showDeletePopup = false;
+  }
+
+  updateCategory(category: Category) {
+    category.title = this.newCategoryTitle
+    category.userId = +this.authService.getUserId()
+    this.isCategoryEdit = false;
+    this.noteService.updateCategory(category).subscribe({
+      next: (): void => {
+        this.getCategories()
+      }
+    });
+  }
+
+  cancelCategoryEdit() {
+    this.isCategoryEdit = false
+  }
+
+  toggleCategoryEdit(category: Category) {
+    this.isCategoryEdit = true;
+    this.newCategoryTitle = category.title;
+  }
+
+  goToNote(note: Note) {
+    this.router.navigate([`/user/notes/${note.noteId}`]);
   }
 }

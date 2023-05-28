@@ -120,6 +120,10 @@ h2 {
   margin-bottom: 5px;
 }
 
+.note h3:hover {
+  cursor: pointer;
+}
+
 .note p {
   padding: 0 10px;
   margin: 0;
@@ -312,6 +316,74 @@ button.add-button:hover {
   margin-bottom: 1%;
 }
 
-/*.category-title span:hover {*/
-/*  color: #ff0000;*/
-/*}*/
+
+
+.delete-popup {
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.delete-popup p {
+  margin-bottom: 10px;
+  color: #396C1D;
+}
+
+
+.cancel-button {
+  background: #B3E2B1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.cancel-button {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.cancel-button:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+.delete-button  {
+  margin-left: 15%;
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(249, 145, 122, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.delete-button:hover {
+  background-color: #F9917A;
+  cursor: pointer;
+  color: white;
+}
+
+.category-title {
+  margin-bottom: 10px;
+  color: #396C1D;
+  font-weight: 600;
+}
+
+.category-title input {
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  border-radius: 3px;
+  font-size: 20px;
+}

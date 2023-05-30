@@ -13,6 +13,9 @@ export const appLinks= {
   uploadImage:`https://api.cloudinary.com/v1_1/dir5cpatv/image/upload`,
   getHabits: `${environment.serverUrl}/api/users/habits/search`,
   habits: `${environment.serverUrl}/api/users/habits`,
+  getNotes: `${environment.serverUrl}/api/users/notes/search`,
+  notes: `${environment.serverUrl}/api/users/notes`,
+  categories: `${environment.serverUrl}/api/users/notes/categories`,
 }
 export const cld = new Cloudinary({
   cloud: {

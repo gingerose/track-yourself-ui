@@ -1,0 +1,67 @@
+<p class="h1">Notes</p>
+<div class="search">
+  <div>
+    <span class="search-icon" nz-icon nzType="search"></span>
+    <input type="text" [(ngModel)]="findNotesRequest.title" (keydown.enter)="submitSearch()">
+    <select [(ngModel)]="findNotesRequest.category" (change)="submitSearch()">
+      <option class="option" value="">Select the category</option>
+      <option *ngFor="let category of categories" [value]="category.title">{{category.title}}</option>
+    </select>
+  </div>
+  <div>
+    From: <input type="date" [ngModel]="findNotesRequest.firstDate"
+                 (ngModelChange)="findNotesRequest.firstDate = $event" (ngModelChange)="submitSearch()">
+    To: <input type="date" [ngModel]="findNotesRequest.secondDate"
+               (ngModelChange)="findNotesRequest.secondDate = $event" (ngModelChange)="submitSearch()">
+  </div>
+</div>
+
+<div class="block">
+  <div *ngFor="let category of categoryNotes">
+    <div class="notes-container">
+      <div class="category-title">
+        <div  *ngIf="!isCategoryEdit" (click)="toggleCategoryEdit(category)"><h2>{{ category.title }}</h2></div>
+        <input class="category-title" type="text" [(ngModel)]="newCategoryTitle" *ngIf="isCategoryEdit" (keydown.enter)="updateCategory(category)"
+               (keydown.escape)="cancelCategoryEdit()">
+        <span class="delete" nz-icon nzType="close-square" nzTheme="outline"  (click)="confirmDeleteCategory(category)"></span>
+      </div>
+      <div class="notes">
+        <div *ngFor="let note of category.notes">
+          <div class="note">
+            <div class="title">
+              <h3 (click)="goToNote(note)">{{ note.title }}</h3>
+              <span class="delete" nz-icon nzType="close-square" nzTheme="outline"  (click)="confirmDeleteNote(note)"></span>
+            </div>
+            <p>{{ note.date | date }}</p>
+            <p>{{ note.text | slice:0:20 }}{{ note.text.length > 20 ? '...' : '' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="add" (click)="openPopup()">
+  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+</button>
+
+<div class="popup" *ngIf="showPopup">
+  <input type="text" [(ngModel)]="newNote.title" placeholder="Title of note">
+  <div class="category">
+  <input type="text" [(ngModel)]="newCategory.title" (keydown.enter)="addCategory(); newCategory.title = ''" placeholder="New category (for submit press enter)">
+    <select [(ngModel)]="selectedCategoryId">
+      <option class="option" value="-1" [attr.selected]="selectedCategoryId === -1 ? true : null">Select the category</option>
+      <option *ngFor="let category of categories" [value]="category.categoryId">
+        {{category.title}}
+      </option>
+    </select>
+  </div>
+  <button class="add-button" (click)="addNote()">Оk</button>
+  <button class="add-button" (click)="cancel()">Cancel</button>
+</div>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <p>Do you really want to delete this category? All notes of this category will be deleted to.</p>
+  <button class="delete-button" (click)="deleteCategory()">Delete</button>
+  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+</div>

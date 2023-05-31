@@ -11,6 +11,7 @@ import {CollectionItemsComponent} from "./components/collection-items/collection
 import {HabitsComponent} from "./components/habits/habits.component";
 import {NotesComponent} from "./components/notes/notes.component";
 import {NoteItemComponent} from "./components/note-item/note-item.component";
+import {StatisticComponent} from "./components/statistic/statistic.component";
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'habits', component: HabitsComponent },
       { path: 'notes', component: NotesComponent },
       { path: 'notes/:noteId', component: NoteItemComponent },
+      { path: 'statistic', component: StatisticComponent },
     ]},
   { path: '', pathMatch: 'full', redirectTo: '/sign-up' },
 ];

@@ -1,0 +1,39 @@
+<p class="h1">Statistic</p>
+<div class="search">
+  <div>
+    <input type="date" [ngModel]="statisticRequest.date" (ngModelChange)="statisticRequest.date = $event" (ngModelChange)="submitSearch()">
+  </div>
+  <div>
+    Statistic by the year
+    <input type="checkbox" [(ngModel)]="statisticRequest.year" (change)="submitSearch()">
+  </div>
+</div>
+
+<div class="scroll">
+<div class="chart-container" *ngIf="barCollectionsChartConfig">
+  <canvas baseChart
+          [data]="barCollectionsChartConfig.data"
+          [labels]="barCollectionsChartConfig.data.labels"
+          [options]="barCollectionsChartConfig.options"
+          [type]="barCollectionsChartConfig.type">
+  </canvas>
+</div>
+
+<div class="pie" *ngIf="myChartConfig">
+  <canvas baseChart
+          [data]="myChartConfig.data"
+          [labels]="myChartConfig.data.labels"
+          [options]="myChartConfig.options"
+          [type]="myChartConfig.type">
+  </canvas>
+</div>
+
+<div class="chart-container" *ngIf="barHabitsChartConfig">
+  <canvas baseChart
+          [data]="barHabitsChartConfig.data"
+          [labels]="barHabitsChartConfig.data.labels"
+          [options]="barHabitsChartConfig.options"
+          [type]="barHabitsChartConfig.type">
+  </canvas>
+</div>
+</div>

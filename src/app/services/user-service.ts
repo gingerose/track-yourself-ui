@@ -20,4 +20,8 @@ export class AuthRestService {
   public signUp(body: User) : Observable<User>{
     return this.http.post<User>(appLinks.signup, body);
   }
+
+  public updateUser (body: User) : Observable<User>{
+    return this.http.put<User>(appLinks.user, body);
+  }
 }

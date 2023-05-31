@@ -9,5 +9,25 @@
         <span class="title">{{link.name}}</span>
       </a>
     </li>
+    <li class="settings">
+      <span nz-icon nzType="setting" nzTheme="outline"></span>
+      <span class="title" (click)="openPopup()">SETTINGS</span>
+    </li>
   </ul>
+</div>
+
+<div class="popup" *ngIf="showPopup">
+  <input type="file" (change)="onFileSelect($event)" class="file" #uploadFile>
+  <div class="custom-button" (click)="uploadFile.click()">
+    Select image
+  </div>
+  <input type="text" [(ngModel)]="user.username" placeholder="User name">
+  <input type="text" [(ngModel)]="user.login" placeholder="Login">
+  <input type="password" [(ngModel)]="user.password" placeholder="Password">
+  <input type="password" [(ngModel)]="checkPassword" required placeholder="Confirm password">
+  <p *ngIf="error">
+    <nz-alert nzType="error" class="error" nzMessage="{{message}}" nzShowIcon></nz-alert>
+  </p>
+  <button class="add-button" (click)="updateUser()">Оk</button>
+  <button class="add-button" (click)="cancel()">Cancel</button>
 </div>

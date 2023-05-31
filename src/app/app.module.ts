@@ -31,6 +31,11 @@ import { MatIconModule } from '@angular/material/icon';
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NotesComponent} from "./components/notes/notes.component";
 import {NoteItemComponent} from "./components/note-item/note-item.component";
+import {StatisticComponent} from "./components/statistic/statistic.component";
+import {NzStatisticModule} from "ng-zorro-antd/statistic";
+import {NzGraphModule} from "ng-zorro-antd/graph";
+import {NgChartsModule} from "ng2-charts";
+
 
 registerLocaleData(en);
 
@@ -47,7 +52,8 @@ registerLocaleData(en);
     CollectionItemsComponent,
     HabitsComponent,
     NotesComponent,
-    NoteItemComponent
+    NoteItemComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,11 @@ registerLocaleData(en);
     CloudinaryModule,
     NzCalendarModule,
     MatIconModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzStatisticModule,
+    NzGraphModule,
+    NgChartsModule,
+
   ],
   providers: [
     {

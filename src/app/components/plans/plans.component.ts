@@ -139,6 +139,7 @@ export class PlansComponent {
   public addPlanApi(plan: Plan): void {
     this.planService.addPlan(plan).subscribe({
       next: (): void => {
+        this.getPlans()
       }
     });
   }

@@ -55,6 +55,89 @@ li:hover {
   color: #396C1D;
 }
 
+.settings {
+  margin-top: 165%;
+}
 
+.settings:hover {
+  cursor: pointer;
+}
 
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
 
+.popup input[type="file"],
+.popup input[type="text"],
+.popup input[type="password"]{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.popup input[type="date"] {
+  color: #396C1D;
+}
+
+button.add-button, {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.file{
+    display: none;
+}
+
+.custom-button {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.custom-button:hover{
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+
+button.add-button:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
+}
+
+.add {
+  background: none;
+  border: none;
+  position: relative;
+  left: 650px;
+  margin-top: 20px;
+}
+
+.add span {
+  font-size: 40px;
+  color: #396C1D;
+  border-radius: 50%;
+}
+
+.add span:hover {
+  cursor: pointer;
+  background: #B3E2B1;
+}

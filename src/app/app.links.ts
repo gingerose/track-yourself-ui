@@ -1,10 +1,11 @@
-import {environment} from "./environments/environment"
+import {environment} from "./environments/environment.prod"
 import {Cloudinary} from "@cloudinary/url-gen";
 
 export const appLinks= {
   production: true,
   login: `${environment.serverUrl}/api/auth/login`,
   signup: `${environment.serverUrl}/api/auth/signup`,
+  user: `${environment.serverUrl}/api/auth`,
   plans: `${environment.serverUrl}/api/users/plans`,
   getPlans: `${environment.serverUrl}/api/users/plans/search`,
   getCollections: `${environment.serverUrl}/api/users/collections/search`,
@@ -16,6 +17,9 @@ export const appLinks= {
   getNotes: `${environment.serverUrl}/api/users/notes/search`,
   notes: `${environment.serverUrl}/api/users/notes`,
   categories: `${environment.serverUrl}/api/users/notes/categories`,
+  statisticPlans: `${environment.serverUrl}/api/users/statistic/plans`,
+  statisticCollections: `${environment.serverUrl}/api/users/statistic/collections`,
+  statisticHabits: `${environment.serverUrl}/api/users/statistic/habits`,
 }
 export const cld = new Cloudinary({
   cloud: {

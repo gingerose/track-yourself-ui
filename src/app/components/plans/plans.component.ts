@@ -42,6 +42,7 @@ export class PlansComponent {
   weekDates: Date[] = [];
 
   constructor(private authService: AuthService, private planService: PlanService) {
+    this.authService.loadUserData()
     this.user = authService.getUser();
     this.findPlansRequest.userId = this.user.userId
     this.getDates(this.findPlansRequest.date)

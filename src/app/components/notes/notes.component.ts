@@ -53,7 +53,7 @@ export class NotesComponent {
   newCategoryTitle: string = "";
 
   constructor(private authService: AuthService, private noteService: NotesService, private router: Router) {
-    authService.loadUserData()
+    this.authService.loadUserData()
     this.getNotes()
     this.getCategories()
   }

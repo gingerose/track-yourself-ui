@@ -52,6 +52,7 @@ export class StatisticComponent implements OnInit {
   }
 
   constructor(private authService: AuthService, private statisticService: StatisticService) {
+    this.authService.loadUserData()
   }
 
   public getStatisticPlans(): void {

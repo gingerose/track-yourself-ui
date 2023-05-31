@@ -31,6 +31,7 @@ export class CollectionItemsComponent {
   isTitleEdit = false;
 
   constructor(private authService: AuthService, private collectionService: CollectionService, private route: ActivatedRoute) {
+    this.authService.loadUserData()
     this.route.paramMap.subscribe(params => {
       // @ts-ignore
       this.collection.collectionId = +params.get('collectionId');

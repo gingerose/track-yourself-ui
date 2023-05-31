@@ -45,6 +45,7 @@ export class HabitsComponent {
   };
 
   constructor(private authService: AuthService, private habitsService: HabitsService) {
+    this.authService.loadUserData()
     this.getHabits();
     const currentDate = new Date();
     this.selectedYear = currentDate.getFullYear();

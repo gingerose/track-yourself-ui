@@ -27,7 +27,7 @@ export class NoteItemComponent {
     this.editedText = this.note.text;
   }
   constructor(private authService: AuthService, private noteService: NotesService, private route: ActivatedRoute) {
-    authService.loadUserData()
+    this.authService.loadUserData()
     this.route.paramMap.subscribe(params => {
       // @ts-ignore
       this.note.noteId = +params.get('noteId');

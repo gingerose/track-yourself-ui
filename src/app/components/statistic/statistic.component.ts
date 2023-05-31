@@ -7,6 +7,7 @@ import {Plan} from "../../models/plan";
 import {StatisticService} from "../../services/statistic-service";
 import {StatisticCollections} from "../../models/StatisticCollections";
 import {StatisticHabits} from "../../models/StatisticHabits";
+import {Subscription} from "rxjs";
 
 interface CustomChartConfiguration<TType extends ChartType, TData, TLabel> {
   type: TType;
@@ -35,6 +36,11 @@ export class StatisticComponent implements OnInit {
     date: new Date(),
     userId: +this.authService.getUserId(),
     year: false
+  }
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   dataPlans: StatisticPlans[] = [];

@@ -4,6 +4,7 @@ import {User} from "../../models/user";
 import {AuthService} from "../../services/auth.service";
 import {PlanService} from "../../services/plan-service";
 import {FindPlansRequest} from "../../models/find-plans-request";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-plans',
@@ -40,6 +41,12 @@ export class PlansComponent {
   showDeletePopup: boolean = false;
   planToDelete: any;
   weekDates: Date[] = [];
+
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(private authService: AuthService, private planService: PlanService) {
     this.authService.loadUserData()

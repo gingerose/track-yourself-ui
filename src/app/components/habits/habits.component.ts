@@ -7,6 +7,7 @@ import {AuthService} from "../../services/auth.service";
 import {HabitsService} from "../../services/habits-service";
 import {CollectionItem} from "../../models/collection-item";
 import {Collection} from "../../models/collections";
+import {Subscription} from "rxjs";
 
 interface Day {
   day: number | null;
@@ -43,6 +44,11 @@ export class HabitsComponent {
     date: this.selectedDate,
     habitItems: []
   };
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(private authService: AuthService, private habitsService: HabitsService) {
     this.authService.loadUserData()

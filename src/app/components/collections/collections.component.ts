@@ -6,6 +6,7 @@ import {AuthService} from "../../services/auth.service";
 import {PlanService} from "../../services/plan-service";
 import {CollectionService} from "../../services/collection-service";
 import {Router} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-collections',
@@ -38,6 +39,11 @@ export class CollectionsComponent {
     fullAmount: 0,
     doneAmount: 0
   };
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(private authService: AuthService, private collectionService: CollectionService, private router: Router) {
     authService.loadUserData()

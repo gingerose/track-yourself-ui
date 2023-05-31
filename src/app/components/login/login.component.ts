@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {PasswordMatch} from "../../services/password-validator";
 import {User} from "../../models/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,11 @@ export class LoginComponent {
   toggle: boolean = true;
   error: boolean = false;
   message: string = "";
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(
     private fb: FormBuilder,

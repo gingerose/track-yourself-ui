@@ -9,7 +9,7 @@ import {focusOn} from "@cloudinary/url-gen/qualifiers/gravity";
 import {FocusOn} from "@cloudinary/url-gen/qualifiers/focusOn";
 import {byRadius} from "@cloudinary/url-gen/actions/roundCorners";
 import {appLinks, cld} from "../../app.links";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AuthRestService} from "../../services/user-service";
 
@@ -31,6 +31,11 @@ export class SidebarComponent {
   private imageHeight = 80;
   error: boolean = false;
   message: string = "";
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(private authService: AuthService, public router: Router, private http: HttpClient, private userService: AuthRestService) {
     this.authService.loadUserData();

@@ -6,6 +6,7 @@ import {Collection} from "../../models/collections";
 import {AuthService} from "../../services/auth.service";
 import {CollectionService} from "../../services/collection-service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-collection-items',
@@ -29,6 +30,11 @@ export class CollectionItemsComponent {
   newTitle: string = ""
 
   isTitleEdit = false;
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(private authService: AuthService, private collectionService: CollectionService, private route: ActivatedRoute) {
     this.authService.loadUserData()

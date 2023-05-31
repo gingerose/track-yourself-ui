@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm i -g ng && ng serve",
-    "build": "ng build --configuration production",
-    "test": "ng test"
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "heroku-postbuild": "cd ANGULAR_APP_FOLDER && npm install",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {

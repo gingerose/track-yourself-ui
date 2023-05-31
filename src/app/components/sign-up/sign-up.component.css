@@ -16,6 +16,7 @@ html, body ::-webkit-scrollbar {
   font-size: 50px;
   line-height: 150%;
   color: #396C1D;
+  margin-bottom: 10%;
 }
 
 p {
@@ -32,7 +33,7 @@ p {
 
 .logo img{
   width: 45%;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
 }
 
 .picture {
@@ -73,7 +74,7 @@ p {
 
 .form-container .inner {
   width: 90%;
-  height: 90%;
+  height: 95%;
   max-width: 400px;
   text-align: center;
   padding: 20px;

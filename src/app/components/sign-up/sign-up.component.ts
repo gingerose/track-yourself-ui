@@ -6,6 +6,7 @@ import {PasswordMatch} from "../../services/password-validator";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-sign-up',
@@ -26,6 +27,11 @@ export class SignUpComponent {
   }
 
   public form!: FormGroup;
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     const options: AbstractControlOptions = {

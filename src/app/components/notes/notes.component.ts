@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {NotesService} from "../../services/notes-service";
 import {FindNotesRequest} from "../../models/find-notes-request";
 import {Note} from "../../models/note";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-notes',
@@ -51,6 +52,11 @@ export class NotesComponent {
   };
   isCategoryEdit: boolean = false;
   newCategoryTitle: string = "";
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   constructor(private authService: AuthService, private noteService: NotesService, private router: Router) {
     this.authService.loadUserData()

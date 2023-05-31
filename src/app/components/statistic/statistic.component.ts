@@ -7,6 +7,7 @@ import {Plan} from "../../models/plan";
 import {StatisticService} from "../../services/statistic-service";
 import {StatisticCollections} from "../../models/StatisticCollections";
 import {StatisticHabits} from "../../models/StatisticHabits";
+import {Subscription} from "rxjs";
 
 interface CustomChartConfiguration<TType extends ChartType, TData, TLabel> {
   type: TType;
@@ -44,6 +45,11 @@ export class StatisticComponent implements OnInit {
   public myChartConfig: CustomChartConfiguration<'pie', number[], string> | undefined
   public barCollectionsChartConfig: ChartConfiguration<'bar', CustomChartData> | undefined
   public barHabitsChartConfig: ChartConfiguration<'bar', CustomChartData> | undefined
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.getStatisticPlans();

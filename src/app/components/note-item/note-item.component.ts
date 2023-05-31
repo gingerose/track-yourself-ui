@@ -4,6 +4,7 @@ import {AuthService} from "../../services/auth.service";
 import {NotesService} from "../../services/notes-service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Category} from "../../models/category";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-note-item',
@@ -22,6 +23,11 @@ export class NoteItemComponent {
 
   isEditing: boolean = false;
   editedText: string = '';
+  private subscription: Subscription = new Subscription();
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.editedText = this.note.text;

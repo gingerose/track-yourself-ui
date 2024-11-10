@@ -7,7 +7,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +35,8 @@ import {StatisticComponent} from "./components/statistic/statistic.component";
 import {NzStatisticModule} from "ng-zorro-antd/statistic";
 import {NzGraphModule} from "ng-zorro-antd/graph";
 import {NgChartsModule} from "ng2-charts";
+import {ScheduleComponent} from "./components/schedule/schedule.component";
+import {PlansItemComponent} from "./components/plan-item/plan-item.component";
 
 
 registerLocaleData(en);
@@ -43,7 +45,9 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     SignUpComponent,
+    PlansItemComponent,
     PlansComponent,
+    ScheduleComponent,
     LoginComponent,
     CloudinaryComponent,
     SidebarComponent,
@@ -77,6 +81,7 @@ registerLocaleData(en);
 
   ],
   providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

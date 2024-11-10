@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {User} from "../models/user";
 import {FindPlansRequest} from "../models/find-plans-request";
 import {Plan} from "../models/plan";
+import {DecompositionRequest} from "../models/decomposition-request";
 
 
 @Injectable({
@@ -32,6 +33,17 @@ export class PlanService {
       {
         params: new HttpParams().set('planId', id)
       });
+  }
+
+  public getPlanById(id: number): Observable<any> {
+    return this.http.get(appLinks.plans,
+      {
+        params: new HttpParams().set('planId', id)
+      });
+  }
+
+  public generateDecomposition(body: DecompositionRequest): Observable<Plan> {
+    return this.http.post<Plan>(appLinks.generateDecomposition, body);
   }
 
 }

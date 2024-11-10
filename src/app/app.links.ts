@@ -20,6 +20,9 @@ export const appLinks= {
   statisticPlans: `${environment.serverUrl}/api/users/statistic/plans`,
   statisticCollections: `${environment.serverUrl}/api/users/statistic/collections`,
   statisticHabits: `${environment.serverUrl}/api/users/statistic/habits`,
+  getSchedule:`${environment.aiServerUrl}/api/get-schedule`,
+  generateSchedule:`${environment.aiServerUrl}/api/generate-schedule`,
+  generateDecomposition:`${environment.aiServerUrl}/api/decompose-task`,
 }
 export const cld = new Cloudinary({
   cloud: {

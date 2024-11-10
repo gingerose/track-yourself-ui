@@ -52,18 +52,21 @@
         <span class="test" nz-icon nzType="close-square" nzTheme="outline" (click)="confirmDelete(plan)"></span>
       </td>
       <ng-container *ngFor="let day of daysOfWeek; let i = index">
-        <td [ngClass]="getStatusColor(plan, i + 1)" (click)="showColorPicker($event, plan, i + 1)">
+        <td [ngClass]="getStatusColor(plan, i + 1)" (click)="showColorPicker($event, plan, i + 1)"
+            (mousedown)="toPlan($event, plan)">
+          <span class="priority-arrow" *ngIf="plan.dayOfWeek === i + 1" [ngClass]="getPriorityClass(plan.priority)"></span>
           <span class="delay" *ngIf="getStatusColor(plan, i + 1) === 'blue'">➞</span>
         </td>
       </ng-container>
       <td class="description">
-        <span *ngIf="!isEditing(plan)" (click)="startEditing(plan)">{{ plan.description }}</span>
-        <input *ngIf="isEditing(plan)" [(ngModel)]="editedDescription" (blur)="stopEditing(plan)"
+        <span *ngIf="!isEditing(plan)" (click)="startEditing(plan)">{{ plan.name }}</span>
+        <input *ngIf="isEditing(plan)" [(ngModel)]="editedName" (blur)="stopEditing(plan)"
                (keydown.enter)="stopEditing(plan)"/>
       </td>
     </tr>
     </tbody>
   </table>
+
 
   <button class="add" (click)="openPopup()">
     <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
@@ -80,8 +83,17 @@
 </div>
 
 <div class="popup" *ngIf="showPopup">
-  <input type="date" [ngModel]="dateToString(newPlan.date)" (ngModelChange)="onDateChange($event)">
-  <input type="text" [(ngModel)]="newPlan.description">
+  <input type="date" [ngModel]="dateToString(newPlan.creationDate)" (ngModelChange)="onDateChange($event)">
+  <input type="text" [(ngModel)]="newPlan.name" placeholder="Name">
+  <input type="text" [(ngModel)]="newPlan.description" placeholder="Description">
+  <input type="number" [(ngModel)]="newPlan.duration" placeholder="Duration">
+  <select class="priority" [(ngModel)]="newPlan.priority">
+    <option value="CRITICAL">CRITICAL</option>
+    <option value="HIGH">HIGH</option>
+    <option value="MEDIUM">MEDIUM</option>
+    <option value="LOW">LOW</option>
+  </select>
+
   <button class="add-button" (click)="addPlan()">Оk</button>
   <button class="add-button" (click)="cancel()">Cancel</button>
 </div>

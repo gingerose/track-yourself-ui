@@ -1,8 +1,13 @@
 export interface Plan {
   planId: number;
   userId: number;
+  name: string;
   description: string;
   status: string;
-  date: Date;
+  creationDate: Date;
   dayOfWeek: number;
+  priority: string;
+  duration: number;
+  deadline: Date;
+  decomposition: string;
 }

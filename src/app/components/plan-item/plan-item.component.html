@@ -1,0 +1,83 @@
+<div class="header">
+  <span class="h1">Plan</span>
+  <span class="h1">Decomposition</span>
+</div>
+
+<div class="container">
+
+  <div class="form-section">
+    <div *ngIf="plan">
+      <label>
+        <span>Name:</span>
+        <br>
+        <input type="text" [(ngModel)]="plan.name" placeholder="Plan Name"/>
+      </label>
+      <br>
+
+      <label>
+        <span>Description:</span>
+        <br>
+        <textarea type="text" [(ngModel)]="plan.description" placeholder="Plan Description"></textarea>
+      </label>
+      <br>
+
+      <label>
+        <span>Status:</span>
+        <br>
+        <select class="priority" [(ngModel)]="plan.status">
+          <option class="option" value="">Select the status</option>
+          <option value="DONE">Done</option>
+          <option value="IN_PROGRESS">In progress</option>
+          <option value="NOT_ACTUAL">Not actual</option>
+          <option value="DELAY">Delay</option>
+          <option value="EMPTY">Empty</option>
+        </select>
+      </label>
+      <br>
+
+      <label>
+        <span>Priority:</span>
+        <br>
+        <select class="priority" [(ngModel)]="plan.priority">
+          <option value="CRITICAL">CRITICAL</option>
+          <option value="HIGH">HIGH</option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="LOW">LOW</option>
+        </select>
+      </label>
+      <br>
+
+      <label>
+        <span>Duration:</span>
+        <br>
+        <input [(ngModel)]="plan.duration" type="number" placeholder="Duration in hours"/>
+      </label>
+      <br>
+
+      <label>
+        <span>Deadline:</span>
+        <br>
+        <input [(ngModel)]="plan.deadline" type="date"/>
+      </label>
+      <br>
+
+      <button class="add-button" (click)="updatePlan()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="decomposition-section" *ngIf="plan">
+    <textarea class="decomposition-text" [(ngModel)]="plan.decomposition"></textarea>
+    <div class="button-container">
+      <button class="decomposition-button" (click)="showDecomposition()" [disabled]="isLoading">
+        Show Decomposition
+      </button>
+
+      <div *ngIf="isLoading" class="loading-spinner"></div>
+    </div>
+  </div>
+
+
+
+
+
+</div>

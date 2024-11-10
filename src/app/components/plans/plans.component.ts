@@ -5,6 +5,8 @@ import {AuthService} from "../../services/auth.service";
 import {PlanService} from "../../services/plan-service";
 import {FindPlansRequest} from "../../models/find-plans-request";
 import {Subscription} from "rxjs";
+import {Collection} from "../../models/collections";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-plans',
@@ -32,10 +34,15 @@ export class PlansComponent {
   newPlan: Plan = {
     planId: 0,
     userId: 0,
+    name: "",
     description: "",
     status: "EMPTY",
-    date: new Date(),
-    dayOfWeek: -1
+    creationDate: new Date(),
+    dayOfWeek: -1,
+    priority: "LOW",
+    duration: 0,
+    deadline: new Date(),
+    decomposition: ""
   };
 
   showDeletePopup: boolean = false;
@@ -47,7 +54,7 @@ export class PlansComponent {
     this.subscription.unsubscribe();
   }
 
-  constructor(private authService: AuthService, private planService: PlanService) {
+  constructor(private authService: AuthService, private planService: PlanService, private router: Router) {
     this.authService.loadUserData()
     this.user = authService.getUser();
     this.findPlansRequest.userId = this.user.userId
@@ -93,6 +100,8 @@ export class PlansComponent {
     if (this.selectedPlan && this.selectedDayOfWeek) {
       this.selectedPlan.status = status;
       this.selectedPlan.dayOfWeek = this.selectedDayOfWeek;
+      console.log(this.selectedPlan)
+      console.log(this.plans)
       this.updatePlan(this.selectedPlan)
     }
     this.showPicker = false;
@@ -100,30 +109,35 @@ export class PlansComponent {
     this.selectedDayOfWeek = null;
   }
 
-  editedDescription: string | undefined;
+  editedName: string | undefined;
 
   isEditing(plan: Plan): boolean {
-    return this.editedDescription !== undefined && this.editedDescription !== '' && plan === this.selectedPlan;
+    return this.editedName !== undefined && this.editedName !== '' && plan === this.selectedPlan;
   }
 
   startEditing(plan: Plan): void {
-    this.editedDescription = plan.description;
+    this.editedName = plan.name;
     this.selectedPlan = plan;
   }
 
   stopEditing(plan: Plan): void {
-    if (this.editedDescription !== undefined) {
-      plan.description = this.editedDescription;
-      this.editedDescription = undefined;
+    if (this.editedName !== undefined) {
+      plan.name = this.editedName;
+      this.editedName = undefined;
       this.updatePlan(plan)
     }
     this.selectedPlan = {
       planId: 0,
       userId: 0,
+      name: "",
       description: "",
       status: "EMPTY",
-      date: new Date(),
-      dayOfWeek: -1
+      creationDate: new Date(),
+      dayOfWeek: -1,
+      priority: "LOW",
+      duration: 0,
+      deadline: new Date(),
+      decomposition: ""
     };
   }
 
@@ -156,14 +170,14 @@ export class PlansComponent {
   }
 
   onDateChange(value: string) {
-    this.newPlan.date = new Date(value);
+    this.newPlan.creationDate = new Date(value);
   }
 
   addPlan() {
     this.newPlan.userId = this.user.userId;
-    this.newPlan.dayOfWeek = (this.newPlan.date.getUTCDay() + 6) % 7 + 1;
+    this.newPlan.dayOfWeek = (this.newPlan.creationDate.getUTCDay() + 6) % 7 + 1;
     this.addPlanApi(this.newPlan);
-    const desiredDate = new Date(this.newPlan.date);
+    const desiredDate = new Date(this.newPlan.creationDate);
     let isDateIncluded = false;
 
     for (let i = 0; i < this.weekDates.length; i++) {
@@ -186,10 +200,15 @@ export class PlansComponent {
     this.newPlan = {
       planId: 0,
       userId: 0,
+      name: "",
       description: "",
       status: "EMPTY",
-      date: new Date(),
-      dayOfWeek: -1
+      creationDate: new Date(),
+      dayOfWeek: -1,
+      priority: "LOW",
+      duration: 0,
+      deadline: new Date(),
+      decomposition: ""
     };
   }
 
@@ -252,4 +271,26 @@ export class PlansComponent {
   submitSearch(): void {
     this.getPlans()
   }
+
+  getPriorityClass(priority: string): string {
+    switch (priority) {
+      case 'LOW':
+        return 'priority-low';
+      case 'MEDIUM':
+        return 'priority-medium';
+      case 'HIGH':
+        return 'priority-high';
+      case 'CRITICAL':
+        return 'priority-critical';
+      default:
+        return '';
+    }
+  }
+
+  toPlan(event: MouseEvent, plan: Plan): void {
+    if (event.button == 1) {
+      this.router.navigate([`/user/plans/${plan.planId}/item`]);
+    }
+  }
+
 }

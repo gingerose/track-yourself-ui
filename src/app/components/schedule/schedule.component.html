@@ -1,0 +1,104 @@
+<p class="h1">Schedule</p>
+<div class="search">
+  <div>
+    <input type="date" [ngModel]="findScheduleRequest.date" (ngModelChange)="findScheduleRequest.date = $event"
+           (ngModelChange)="submitSearch()">
+  </div>
+</div>
+<div class="scroll">
+  <div class="color-legend">
+    <div class="legend-item">
+      <div class="color-option-green"></div>
+      <span class="legend-label">- Task done</span>
+    </div>
+    <div class="legend-item">
+      <div class="color-option-yellow"></div>
+      <span class="legend-label">- Task in progress</span>
+    </div>
+    <div class="legend-item">
+      <div class="color-option-red"></div>
+      <span class="legend-label">- Task isn’t actual</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-label">➞ - Task rescheduled</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading">
+    <table>
+      <thead>
+      <tr>
+        <th class="delete"></th>
+        <th *ngFor="let day of weekDates">{{ day | date: 'dd.MM' }}</th>
+      </tr>
+      <tr>
+        <th class="delete"></th>
+        <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of schedule">
+        <td class="delete">
+
+        </td>
+        <ng-container *ngFor="let day of daysOfWeek; let i = index">
+          <td [ngClass]="getStatusColor(item, i + 1)" (click)="showColorPicker($event, item, i + 1)"
+              (mousedown)="toPlan(item)">
+          <span class="priority-arrow" *ngIf="item.dayOfWeek === i + 1"
+                [ngClass]="getPriorityClass(item.priority)"></span>
+            <span class="delay" *ngIf="getStatusColor(item, i + 1) === 'blue'">➞</span>
+          </td>
+        </ng-container>
+        <td class="emptyTd"></td>
+        <td class="description" [ngClass]="getBackgroundClass(item.suggestedTime)">
+        <span>
+          {{ item.name }}
+        </span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="loading" class="loading-bar">
+    <div class="loading-bar-inner"></div>
+  </div>
+
+  <button class="add-button" (click)="generateSchedule()">Generate schedule</button>
+
+</div>
+<!--    <button class="add" (click)="openPopup()">-->
+<!--      <span nz-icon nzType="plus-circle" nzTheme="outline"></span>-->
+<!--    </button>-->
+<!--</div>-->
+
+<div class="color-picker" *ngIf="showPicker" [style.top.px]="pickerTop" [style.left.px]="pickerLeft">
+  <div class="color-option-green" (click)="changeStatusAndColor('DONE')"></div>
+  <div class="color-option-yellow" (click)="changeStatusAndColor('IN_PROGRESS')"></div>
+  <div class="color-option-red" (click)="changeStatusAndColor('NOT_ACTUAL')"></div>
+  <div class="color-option-blue" (click)="changeStatusAndColor('DELAY')">
+    <span class="arrow">➞</span>
+  </div>
+</div>
+
+<!--<div class="popup" *ngIf="showPopup">-->
+<!--  <input type="date" [ngModel]="dateToString(newPlan.creationDate)" (ngModelChange)="onDateChange($event)">-->
+<!--  <input type="text" [(ngModel)]="newPlan.name" placeholder="Name">-->
+<!--  <input type="text" [(ngModel)]="newPlan.description" placeholder="Description">-->
+<!--  <input type="number" [(ngModel)]="newPlan.duration" placeholder="Duration">-->
+<!--  <select class="priority" [(ngModel)]="newPlan.priority">-->
+<!--    <option value="CRITICAL">CRITICAL</option>-->
+<!--    <option value="HIGH">HIGH</option>-->
+<!--    <option value="MEDIUM">MEDIUM</option>-->
+<!--    <option value="LOW">LOW</option>-->
+<!--  </select>-->
+
+<!--  <button class="add-button" (click)="addPlan()">Оk</button>-->
+<!--  <button class="add-button" (click)="cancel()">Cancel</button>-->
+<!--</div>-->
+
+<!--<div class="delete-popup" *ngIf="showDeletePopup">-->
+<!--  <p>Do you really want to delete this plan?</p>-->
+<!--  <button class="delete-button" (click)="deletePlan()">Delete</button>-->
+<!--  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>-->
+<!--</div>-->

@@ -44,7 +44,7 @@ export class CloudinaryComponent implements OnInit{
       }
     });
 
-    this.img = cld.image('pictures/wbduig2hycbdjritvhm4');
+    this.img = cld.image('pictures/xfmzau.jpg');
 
     this.img
       .resize(thumbnail().width(80).height(80).gravity(focusOn(FocusOn.face())))

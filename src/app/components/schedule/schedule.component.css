@@ -1,4 +1,5 @@
 table {
+  margin-left: 5%;
   margin-top: 5%;
   border-collapse: collapse;
 }
@@ -100,7 +101,7 @@ td.blue {
 /* Удаление обводки для столбца описания */
 td:last-child {
   border: none;
-  background: none;
+  /*background: none;*/
 }
 
 td.green,
@@ -122,6 +123,8 @@ td.empty div {
 td.description {
   position: relative;
   width: 250px;
+  border-radius: 5px;
+  border: 2px solid white;
 }
 
 td.description input {
@@ -140,7 +143,7 @@ td.description input {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px;
-  z-index: 11;
+  z-index: 2;
 }
 
 .color-picker div {
@@ -217,7 +220,7 @@ button.add-button:hover {
   color: white;
 }
 
-.add {
+.add-button {
   background: none;
   border: none;
   position: relative;
@@ -480,4 +483,65 @@ button.add-button:hover {
 td {
   position: relative;
 }
+
+.morning-background {
+  background-image: url('/assets/morning.png');
+  padding: 5px; /* Чтобы текст не примыкал к краям */
+  color: #ad7a44; /* Например, белый цвет текста для контраста */
+}
+
+.day-background {
+  background-image: url('/assets/day.png');
+  padding: 5px;
+  color: #964334;
+}
+
+.night-background {
+  background-image: url('/assets/night.png');
+  padding: 5px;
+  color: #fff;
+}
+
+.morning-background,
+.day-background,
+.night-background {
+  background-size: cover; /* Подгонка изображения под ширину ячейки */
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw; /* 50% ширины окна */
+  padding: 10px;
+  box-sizing: border-box; /* Чтобы padding не увеличивал размер */
+}
+
+/* Style for the loading bar */
+.loading-bar {
+  position: relative;
+  height: 10px;
+  background-color: #f3f3f3;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-top: 10%;
+}
+
+.loading-bar-inner {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #B3E2B1;
+  animation: loading-animation 2s infinite;
+}
+
+/* Animation for the loading bar */
+@keyframes loading-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 

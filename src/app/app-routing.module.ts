@@ -12,6 +12,8 @@ import {HabitsComponent} from "./components/habits/habits.component";
 import {NotesComponent} from "./components/notes/notes.component";
 import {NoteItemComponent} from "./components/note-item/note-item.component";
 import {StatisticComponent} from "./components/statistic/statistic.component";
+import {ScheduleComponent} from "./components/schedule/schedule.component";
+import {PlansItemComponent} from "./components/plan-item/plan-item.component";
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent},
@@ -21,6 +23,8 @@ const routes: Routes = [
     canActivate: [HomeGuard],
     children: [
       { path: 'plans', component: PlansComponent },
+      { path: 'plans/:planId/item', component: PlansItemComponent },
+      { path: 'schedule', component: ScheduleComponent },
       { path: 'collections', component: CollectionsComponent },
       { path: 'collections/:collectionId/item', component: CollectionItemsComponent },
       { path: 'habits', component: HabitsComponent },

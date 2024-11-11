@@ -163,6 +163,15 @@
   margin: 0;
 }
 
+.h2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #396C1D;
+  margin: 0;
+  margin-left: 3%;
+}
+
 .search {
   margin-bottom: 5%;
   margin-top: 2%;
@@ -255,4 +264,11 @@ button.add-button:hover {
 .add span:hover {
   cursor: pointer;
   background: #B3E2B1;
+}
+
+.divider {
+  border-top: 3px solid #ccc; /* Разделительная линия */
+  margin: 20px 20px 20px 20px;
+  border-color: #a9d289;
+  margin-bottom: 5%;
 }

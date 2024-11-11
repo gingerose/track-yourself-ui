@@ -8,6 +8,7 @@ import {FindCollectionItemsRequest} from "../models/find-collection-items-reques
 import {CollectionItem} from "../models/collection-item";
 import {environment} from "../environments/environment.prod";
 import {CollectionItemsComponent} from "../components/collection-items/collection-items.component";
+import {BaseCollectionRequest} from "../models/base-collection-request";
 
 
 @Injectable({
@@ -62,5 +63,9 @@ export class CollectionService {
       {
         params: new HttpParams().set('collectionId', body.collectionId)
       });
+  }
+
+  public baseCollectionCount(body: BaseCollectionRequest): Observable<any> {
+    return this.http.post<BaseCollectionRequest>(appLinks.getCount, body)
   }
 }

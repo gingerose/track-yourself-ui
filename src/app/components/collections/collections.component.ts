@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {Collection} from "../../models/collections";
-import {Plan} from "../../models/plan";
 import {FindCollectionRequest} from "../../models/find-collection-request";
 import {AuthService} from "../../services/auth.service";
-import {PlanService} from "../../services/plan-service";
 import {CollectionService} from "../../services/collection-service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {BaseCollectionRequest} from "../../models/base-collection-request";
 
 @Component({
   selector: 'app-collections',
@@ -15,6 +14,7 @@ import {Subscription} from "rxjs";
 })
 export class CollectionsComponent {
   collections: Collection[] = [];
+  baseCollections: Collection[] = [];
   findCollectionsRequest: FindCollectionRequest = {
     userId: -1,
     title: "",
@@ -31,6 +31,28 @@ export class CollectionsComponent {
     fullAmount: 0,
     doneAmount: 0,
   }
+
+  filmCollection: Collection = {
+    userId: +this.authService.getUserId(),
+    collectionId: 2435466,
+    title: "Movies",
+    fullAmount: 0,
+    doneAmount: 0,
+  }
+
+  baseCollectionRequest: BaseCollectionRequest = {
+    userId: 0,
+    collectionId: ""
+  }
+
+  bookCollection: Collection = {
+    userId: +this.authService.getUserId(),
+    collectionId: 9875768,
+    title: "Books",
+    fullAmount: 0,
+    doneAmount: 0,
+  }
+
   showDeletePopup?: boolean;
   collectionToDelete: Collection = {
     userId: +this.authService.getUserId(),
@@ -49,6 +71,15 @@ export class CollectionsComponent {
     authService.loadUserData()
     this.findCollectionsRequest.userId = +authService.getUserId()
     this.getCollections()
+    this.baseCollectionRequest.userId = +authService.getUserId()
+    this.baseCollectionRequest.collectionId = String(this.bookCollection.collectionId)
+    this.getCountBookCollectionApi()
+    this.baseCollectionRequest.collectionId = String(this.filmCollection.collectionId)
+    this.getCountFilmCollectionApi()
+    this.baseCollections.push(this.bookCollection);
+    this.baseCollections.push(this.filmCollection);
+    console.log(this.baseCollections);
+
   }
 
   public getCollections(): void {
@@ -80,6 +111,10 @@ export class CollectionsComponent {
     this.router.navigate([`/user/collections/${item.collectionId}/item`]);
   }
 
+  toBaseCollection(item: Collection) {
+    this.router.navigate([`/user/collections/${item.collectionId}/item`]);
+  }
+
   deleteCollectionApi(item: Collection) {
     this.collectionService.deleteCollection(item).subscribe({
       next: (): void => {
@@ -103,5 +138,23 @@ export class CollectionsComponent {
 
   cancelDelete() {
     this.showDeletePopup = false;
+  }
+
+  getCountBookCollectionApi() {
+    this.collectionService.baseCollectionCount(this.baseCollectionRequest).subscribe({
+      next: (response: number[]): void => {
+        this.bookCollection.doneAmount = response[0];
+        this.bookCollection.fullAmount = response[1];
+      }
+    });
+  }
+
+  getCountFilmCollectionApi() {
+    this.collectionService.baseCollectionCount(this.baseCollectionRequest).subscribe({
+      next: (response: number[]): void => {
+        this.filmCollection.doneAmount = response[0];
+        this.filmCollection.fullAmount = response[1];
+      }
+    });
   }
 }

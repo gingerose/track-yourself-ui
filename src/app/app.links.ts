@@ -23,6 +23,7 @@ export const appLinks= {
   getSchedule:`${environment.aiServerUrl}/api/get-schedule`,
   generateSchedule:`${environment.aiServerUrl}/api/generate-schedule`,
   generateDecomposition:`${environment.aiServerUrl}/api/decompose-task`,
+  getCount:`${environment.aiServerUrl}/api/items-count`,
 }
 export const cld = new Cloudinary({
   cloud: {

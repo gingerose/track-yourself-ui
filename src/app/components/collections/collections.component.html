@@ -9,6 +9,25 @@
     To:  <input type="date" [ngModel]="findCollectionsRequest.secondDate" (ngModelChange)="findCollectionsRequest.secondDate = $event" (ngModelChange)="submitSearch()">
   </div>
 </div>
+
+<p class="h2">Base Collections</p>
+<br>
+<div class="collection-grid">
+  <div *ngFor="let item of baseCollections" class="collection-block">
+    <div class="collection-title">
+      <span class="collection" (click)="toBaseCollection(item)">{{ item.title }}</span>
+    </div>
+    <div class="collection-status">
+      Done:
+      <div class="amount">
+        {{ item.doneAmount }} из {{ item.fullAmount }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <div class="collection-grid">
   <div *ngFor="let item of collections" class="collection-block">
     <div class="collection-title">

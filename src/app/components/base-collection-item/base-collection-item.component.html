@@ -1,1 +1,46 @@
-<p class="h1">Plan</p>
+<p class="h1">Collections</p>
+<div class="search">
+  <nz-select
+    [(ngModel)]="selectedItem"
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Search . . . "
+    (nzOnSearch)="onSearch($event)"
+    (nzFocus)="loadInitialData()"
+    (ngModelChange)="onSelect($event)"
+    [nzLoading]="isLoading"
+    [nzOptions]="options"
+    [nzServerSearch]="true"
+    (nzScrollToBottom)="loadMore()"
+  >
+  </nz-select>
+
+</div>
+<div class="container">
+  <!-- Основной блок -->
+  <div class="block">
+    <div class="title">{{ collection.title }}</div>
+    <div *ngFor="let item of items" class="item-block">
+      <div class="status-icon" (click)="toggleStatus(item)">
+        <span nz-icon nzType="check" nzTheme="outline" *ngIf="item.status === 'DONE'"></span>
+      </div>
+      <div class="description">
+        <span>{{ item.description }}</span>
+      </div>
+      <span class="delete" nz-icon nzType="close-square" nzTheme="outline" (click)="deleteCollectionItem(item)"></span>
+    </div>
+  </div>
+
+  <!-- Боковой блок с рекомендациями -->
+  <div class="recommendations">
+    <div *ngFor="let recommendation of recommendations" class="recommendation-item">
+      <img [src]="recommendation.image" alt="Recommendation Image" class="recommendation-image" />
+      <div class="recommendation-title">{{ recommendation.title }}</div>
+    </div>
+  </div>
+</div>
+
+
+<!--<button class="add" (click)="addNewItem()">-->
+<!--  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>-->
+<!--</button>-->

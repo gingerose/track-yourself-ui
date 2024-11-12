@@ -42,7 +42,7 @@ export class CollectionsComponent {
 
   baseCollectionRequest: BaseCollectionRequest = {
     userId: 0,
-    collectionId: ""
+    collectionId: 0
   }
 
   bookCollection: Collection = {
@@ -72,9 +72,9 @@ export class CollectionsComponent {
     this.findCollectionsRequest.userId = +authService.getUserId()
     this.getCollections()
     this.baseCollectionRequest.userId = +authService.getUserId()
-    this.baseCollectionRequest.collectionId = String(this.bookCollection.collectionId)
+    this.baseCollectionRequest.collectionId = this.bookCollection.collectionId
     this.getCountBookCollectionApi()
-    this.baseCollectionRequest.collectionId = String(this.filmCollection.collectionId)
+    this.baseCollectionRequest.collectionId = this.filmCollection.collectionId
     this.getCountFilmCollectionApi()
     this.baseCollections.push(this.bookCollection);
     this.baseCollections.push(this.filmCollection);
@@ -112,7 +112,7 @@ export class CollectionsComponent {
   }
 
   toBaseCollection(item: Collection) {
-    this.router.navigate([`/user/collections/${item.collectionId}/item`]);
+    this.router.navigate([`/user/collections/base/${item.collectionId}/item`]);
   }
 
   deleteCollectionApi(item: Collection) {

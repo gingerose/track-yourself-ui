@@ -97,7 +97,8 @@ export class CollectionItemsComponent {
     itemId: 0,
     collectionId: 0,
     status: "",
-    description: ""
+    description: "",
+    userId: 0
   };
 
   isEditing(item: CollectionItem): boolean {
@@ -117,7 +118,8 @@ export class CollectionItemsComponent {
       itemId: 0,
       collectionId: 0,
       status: "",
-      description: ""
+      description: "",
+      userId: 0
     };
   }
 
@@ -139,7 +141,8 @@ export class CollectionItemsComponent {
       itemId: -1,
       collectionId: this.collection.collectionId,
       status: 'EMPTY',
-      description: "Add your description"
+      description: "Add your description",
+      userId: 0
     };
     this.items.push(newItem);
     this.createCollectionItem(newItem)

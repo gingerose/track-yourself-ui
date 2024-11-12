@@ -14,6 +14,7 @@ import {NoteItemComponent} from "./components/note-item/note-item.component";
 import {StatisticComponent} from "./components/statistic/statistic.component";
 import {ScheduleComponent} from "./components/schedule/schedule.component";
 import {PlansItemComponent} from "./components/plan-item/plan-item.component";
+import {BaseCollectionItemComponent} from "./components/base-collection-item/base-collection-item.component";
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'schedule', component: ScheduleComponent },
       { path: 'collections', component: CollectionsComponent },
       { path: 'collections/:collectionId/item', component: CollectionItemsComponent },
+      { path: 'collections/base/:collectionId/item', component: BaseCollectionItemComponent },
       { path: 'habits', component: HabitsComponent },
       { path: 'notes', component: NotesComponent },
       { path: 'notes/:noteId', component: NoteItemComponent },

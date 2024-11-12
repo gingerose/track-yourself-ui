@@ -37,6 +37,9 @@ import {NzGraphModule} from "ng-zorro-antd/graph";
 import {NgChartsModule} from "ng2-charts";
 import {ScheduleComponent} from "./components/schedule/schedule.component";
 import {PlansItemComponent} from "./components/plan-item/plan-item.component";
+import {BaseCollectionItemComponent} from "./components/base-collection-item/base-collection-item.component";
+import {NzSelectModule} from "ng-zorro-antd/select";
+import {NzSpinModule} from "ng-zorro-antd/spin";
 
 
 registerLocaleData(en);
@@ -57,7 +60,8 @@ registerLocaleData(en);
     HabitsComponent,
     NotesComponent,
     NoteItemComponent,
-    StatisticComponent
+    StatisticComponent,
+    BaseCollectionItemComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,8 @@ registerLocaleData(en);
     NzStatisticModule,
     NzGraphModule,
     NgChartsModule,
+    NzSelectModule,
+    NzSpinModule,
 
   ],
   providers: [

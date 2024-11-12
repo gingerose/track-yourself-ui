@@ -3,4 +3,5 @@ export interface CollectionItem {
   collectionId: number;
   status: string;
   description: string;
+  userId: number;
 }

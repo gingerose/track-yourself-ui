@@ -24,6 +24,14 @@ export const appLinks= {
   generateSchedule:`${environment.aiServerUrl}/api/generate-schedule`,
   generateDecomposition:`${environment.aiServerUrl}/api/decompose-task`,
   getCount:`${environment.aiServerUrl}/api/items-count`,
+  baseCollectionItems:`${environment.aiServerUrl}/api/get-items`,
+  updateBaseCollectionItems:`${environment.aiServerUrl}/api/update-item-status`,
+  addBaseCollectionItems:`${environment.aiServerUrl}/api/add-item`,
+  deleteBaseCollectionItems:`${environment.aiServerUrl}/api/delete-item`,
+  getRecommendations:`${environment.aiServerUrl}/api/get-user-recommendations`,
+  generateRecommendations:`${environment.aiServerUrl}/api/generate-recommendations`,
+  getBookData:`${environment.aiServerUrl}/api/books-data`,
+  getFilmData:`${environment.aiServerUrl}/api/films-data`,
 }
 export const cld = new Cloudinary({
   cloud: {

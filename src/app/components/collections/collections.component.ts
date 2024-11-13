@@ -42,7 +42,8 @@ export class CollectionsComponent {
 
   baseCollectionRequest: BaseCollectionRequest = {
     userId: 0,
-    collectionId: 0
+    collectionId: 0,
+    watchedIds: []
   }
 
   bookCollection: Collection = {

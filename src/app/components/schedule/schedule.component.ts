@@ -267,8 +267,10 @@ export class ScheduleComponent {
     });
   }
 
-  toPlan(item: Schedule) {
-    this.router.navigate([`/user/plans/${item.planId}/item`]);
+  toPlan(event: MouseEvent, item: Schedule): void {
+    if (event.button == 1) {
+      this.router.navigate([`/user/plans/${item.planId}/item`]);
+    }
   }
 
 }

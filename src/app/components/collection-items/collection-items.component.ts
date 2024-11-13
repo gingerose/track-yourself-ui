@@ -94,6 +94,7 @@ export class CollectionItemsComponent {
   }
 
   public editedItem: CollectionItem = {
+    id: 0,
     itemId: 0,
     collectionId: 0,
     status: "",
@@ -115,6 +116,7 @@ export class CollectionItemsComponent {
     }
     this.updateCollectionItem(this.editedItem)
     this.editedItem = {
+      id: 0,
       itemId: 0,
       collectionId: 0,
       status: "",
@@ -138,6 +140,7 @@ export class CollectionItemsComponent {
 
   addNewItem(): void {
     const newItem: CollectionItem = {
+      id: 0,
       itemId: -1,
       collectionId: this.collection.collectionId,
       status: 'EMPTY',

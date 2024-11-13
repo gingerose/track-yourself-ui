@@ -110,14 +110,12 @@
 }
 
 .block {
-
+  max-height: 700px;
   margin-top: 4%;
   background: #FCFFFA;
   box-shadow: 5px 5px 15px #D5E8BA;
   border-radius: 7px;
   width: 60%;
-  max-height: 70%;
-  height: 70%;
   color: #396C1D;
   overflow: auto; /* Add this line to enable scrollbar */
 }
@@ -258,7 +256,7 @@ nz-select {
 
 
 .container {
-  height: 105%;
+  height: 75%;
   display: flex;
 }
 
@@ -268,7 +266,7 @@ nz-select {
 }
 
 .recommendations {
-  margin-top: 5%;
+  margin-top: 4%;
   margin-bottom: 2%;
   width: 30%; /* Боковой блок занимает оставшееся пространство */
   display: flex;
@@ -278,20 +276,49 @@ nz-select {
 
 .recommendations {
   width: 30%;
-  max-height: 600px; /* Ограничьте высоту для прокрутки */
+  max-height: 520px; /* Ограничьте высоту для прокрутки */
   overflow-y: auto; /* Добавьте вертикальную прокрутку */
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding-right: 10px; /* Отступ справа для красоты */
+  color: #396C1D;
 }
 
+.recommendations::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recommendations::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.recommendations::-webkit-scrollbar-thumb {
+  background-color: #E4F6CB;
+}
+
+.recommendations::-webkit-scrollbar-thumb:hover {
+  background-color: #E4F6CB;
+}
+
+.recommendations::-webkit-scrollbar-thumb:active {
+  background-color: #B3E2B1;
+}
+
+.recommendations::-webkit-scrollbar-thumb:vertical {
+  border-radius: 4px;
+}
+
+.recommendations::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 4px;
+}
 
 .recommendation-item {
   display: flex;
   flex-direction: column;
   align-items: center; /* Центрируем изображения и текст */
   text-align: center;
+  color: #396C1D;
 }
 
 .recommendation-image {
@@ -303,6 +330,21 @@ nz-select {
 
 .recommendation-title {
   font-size: 14px;
-  color: #333;
+  color: #41642a;
   word-wrap: break-word; /* Перенос слов */
+}
+
+button.add-button {
+  background: none;
+  border-radius: 5px;
+  border: 2px solid rgba(57, 150, 29, 0.3);
+  color: #396C1D;
+  padding: 10px 20px;
+  margin-left: 74%;
+}
+
+button.add-button:hover {
+  background: #B3E2B1;
+  cursor: pointer;
+  color: white;
 }

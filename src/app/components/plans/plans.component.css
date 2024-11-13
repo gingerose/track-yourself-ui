@@ -457,7 +457,7 @@ button.add-button:hover {
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 10px solid;
-  z-index: 1;
+  z-index: -1;
 }
 
 .priority-low {
@@ -481,3 +481,6 @@ td {
   position: relative;
 }
 
+.duration{
+  z-index: 1;
+}

@@ -19,7 +19,8 @@ export class BaseCollectionItemComponent {
 
   baseCollectionRequest: BaseCollectionRequest = {
     userId: 0,
-    collectionId: 0
+    collectionId: 0,
+    watchedIds: []
   }
 
   collection: Collection = {
@@ -31,6 +32,7 @@ export class BaseCollectionItemComponent {
   }
 
   collectionItem: CollectionItem = {
+    id: 0,
     userId: +this.authService.getUserId(),
     collectionId: -1,
     itemId: 0,
@@ -51,6 +53,7 @@ export class BaseCollectionItemComponent {
   options: { label: string; value: number }[] = [];
   isLoading: boolean = false;
   private searchSubject = new Subject<string>();
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
@@ -67,8 +70,8 @@ export class BaseCollectionItemComponent {
       this.collection.title = 'Movies'
     }
     this.baseCollectionRequest.userId = +authService.getUserId()
-    console.log(this.baseCollectionRequest.userId )
-    console.log( +authService.getUserId() )
+    console.log(this.baseCollectionRequest.userId)
+    console.log(+authService.getUserId())
     this.baseCollectionRequest.collectionId = this.collection.collectionId
     this.getCollectionItems()
     this.getRecommendations()
@@ -189,7 +192,7 @@ export class BaseCollectionItemComponent {
   onSelect(itemId: number): void {
     const selectedOption = this.options.find(option => option.value === itemId);
     if (selectedOption) {
-      this.selectedItem = { id: itemId, Name: selectedOption.label };
+      this.selectedItem = {id: itemId, Name: selectedOption.label};
       console.log("Selected item:", this.selectedItem);
       this.collectionItem.collectionId = this.collection.collectionId
       this.collectionItem.status = 'EMPTY'
@@ -218,4 +221,13 @@ export class BaseCollectionItemComponent {
     });
   }
 
+  generateRecommendation() {
+    this.recommendations = []
+    this.baseCollectionRequest.watchedIds = this.items.map(item => item.itemId)
+    this.collectionService.generateRecommendations(this.baseCollectionRequest).subscribe({
+      next: (recommendations: Recommendation[]): void => {
+        this.recommendations = recommendations
+      }
+    });
+  }
 }

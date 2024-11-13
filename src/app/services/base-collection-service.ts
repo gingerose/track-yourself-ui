@@ -36,7 +36,7 @@ export class BaseCollectionService {
   }
 
   public deleteBaseCollectionItem(body: CollectionItem): Observable<any> {
-    const url = `${appLinks.deleteBaseCollectionItems}/${body.itemId}`
+    const url = `${appLinks.deleteBaseCollectionItems}/${body.id}`
     return this.http.delete(url);
   }
 

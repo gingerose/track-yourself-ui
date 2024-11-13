@@ -43,7 +43,7 @@
         </td>
         <ng-container *ngFor="let day of daysOfWeek; let i = index">
           <td [ngClass]="getStatusColor(item, i + 1)" (click)="showColorPicker($event, item, i + 1)"
-              (mousedown)="toPlan(item)">
+              (mousedown)="toPlan($event, item)">
           <span class="priority-arrow" *ngIf="item.dayOfWeek === i + 1"
                 [ngClass]="getPriorityClass(item.priority)"></span>
             <span class="delay" *ngIf="getStatusColor(item, i + 1) === 'blue'">➞</span>

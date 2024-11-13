@@ -1,4 +1,5 @@
 export interface CollectionItem {
+  id: number;
   itemId: number;
   collectionId: number;
   status: string;

@@ -31,16 +31,21 @@
     </div>
   </div>
 
-  <!-- Боковой блок с рекомендациями -->
   <div class="recommendations">
-    <div *ngFor="let recommendation of recommendations" class="recommendation-item">
-      <img [src]="recommendation.image" alt="Recommendation Image" class="recommendation-image" />
+    <div
+      *ngFor="let recommendation of recommendations.slice(0, 10)"
+      class="recommendation-item">
+      <img
+        [src]="recommendation.image"
+        alt="Recommendation Image"
+        class="recommendation-image"
+      />
       <div class="recommendation-title">{{ recommendation.title }}</div>
     </div>
   </div>
 </div>
 
+<button class="add-button" (click)="generateRecommendation()">
+  <span>Generate recommendations</span>
+</button>
 
-<!--<button class="add" (click)="addNewItem()">-->
-<!--  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>-->
-<!--</button>-->

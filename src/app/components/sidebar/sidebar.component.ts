@@ -47,6 +47,7 @@ export class SidebarComponent {
       {name: "HABITS", link: "/user/habits", icon: "insert-row-above"},
       {name: "NOTES", link: "/user/notes", icon: "read"},
       {name: "STATISTICS", link: "/user/statistic", icon: "bar-chart"},
+      {name: "TEAMS", link: "/user/teams", icon: "bar-chart"}
     ];
 
     this.user = authService.getUser();

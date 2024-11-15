@@ -40,6 +40,7 @@ import {PlansItemComponent} from "./components/plan-item/plan-item.component";
 import {BaseCollectionItemComponent} from "./components/base-collection-item/base-collection-item.component";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzSpinModule} from "ng-zorro-antd/spin";
+import {TeamsComponent} from "./components/teams/teams.component";
 
 
 registerLocaleData(en);
@@ -56,6 +57,7 @@ registerLocaleData(en);
     SidebarComponent,
     MainComponent,
     CollectionsComponent,
+    TeamsComponent,
     CollectionItemsComponent,
     HabitsComponent,
     NotesComponent,

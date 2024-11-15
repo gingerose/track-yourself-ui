@@ -32,6 +32,9 @@ export const appLinks= {
   generateRecommendations:`${environment.aiServerUrl}/api/generate-recommendations`,
   getBookData:`${environment.aiServerUrl}/api/books-data`,
   getFilmData:`${environment.aiServerUrl}/api/films-data`,
+  team: `${environment.aiServerUrl}/api/team`,
+  task: `${environment.aiServerUrl}/api/task`,
+  users: `${environment.aiServerUrl}/api/users`,
 }
 export const cld = new Cloudinary({
   cloud: {

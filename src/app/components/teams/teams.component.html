@@ -1,0 +1,61 @@
+<p class="h1">Teams</p>
+
+<div class="collection-grid">
+  <div *ngFor="let item of teams" class="collection-block">
+    <div class="collection-title">
+      <span class="collection">{{ item.teamTitle }}</span>
+      <span
+        class="delete"
+        nz-icon
+        nzType="close-square"
+        nzTheme="outline"
+        (click)="confirmDelete(item)"
+      ></span>
+    </div>
+    <div class="member-grid">
+      <div
+        *ngFor="let member of getTopMembers(item.members)"
+        class="member-avatar"
+      >
+        <img
+          [src]="getCloudinaryImage(member.picture)"
+          [alt]="member.username"
+          class="avatar"
+        />
+        <span class="username">{{ member.username }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button class="add" (click)="openPopup()">
+  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+</button>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <p>Do you really want to delete this team?</p>
+  <button class="delete-button" (click)="deleteTeam()">Delete</button>
+  <button class="cancel-button" (click)="cancelDelete()">Cancel</button>
+</div>
+
+<div class="popup" *ngIf="showPopup">
+  <input type="text" [(ngModel)]="addTeamRequest.teamTitle" placeholder="Title">
+  <div class="users">
+    <nz-select
+      [(ngModel)]="listOfSelectedUsers"
+      [nzMaxTagCount]="3"
+      nzMode="multiple"
+      nzShowSearch
+      nzAllowClear
+      nzPlaceHolder="Search by email . . ."
+      (nzOnSearch)="onSearch($event)"
+      (ngModelChange)="onSelectUsers($event)"
+      [nzLoading]="isLoading"
+      [nzOptions]="userOptions"
+    >
+    </nz-select>
+  </div>
+  <button class="add-button" (click)="addTeam()">Оk</button>
+  <button class="add-button" (click)="cancel()">Cancel</button>
+</div>

@@ -113,8 +113,8 @@ export class TeamsComponent {
     this.router.navigate([`/user/collections/${item.collectionId}/item`]);
   }
 
-  toBaseCollection(item: Collection) {
-    this.router.navigate([`/user/collections/base/${item.collectionId}/item`]);
+  toTeam(item: Team) {
+    this.router.navigate([`/user/teams/${item.teamId}/tasks`]);
   }
 
   deleteTeamApi(item: Team) {
@@ -158,7 +158,7 @@ export class TeamsComponent {
   getUsers() {
     this.teamService.getUsers().subscribe({
       next: (users: User[]) => {
-        this.users = users;
+        this.users = users.filter(user => user.userId !== this.userId);
         this.userOptions = users.map(user => ({
           label: user.login,
           value: user.userId
@@ -207,7 +207,18 @@ export class TeamsComponent {
     this.addTeamRequest.members = this.addMembers
     this.addTeamRequest.members.push({userId: this.userId, isLead: true, picture: this.picture})
     this.teamService.addTeam(team).subscribe({
-      next: (): void => {
+      next: (newTeam: Team): void => {
+        // @ts-ignore
+        newTeam.members = this.addTeamRequest.members.map(member => ({
+          memberId: null,
+          userId: member.userId,
+          username: this.users.find(user => user.userId === member.userId)?.username || '',
+          picture: member.picture,
+          isLead: member.isLead,
+          comment: '',
+          tasks: []
+        }));
+        this.teams.push(newTeam)
       }
     });
     this.showPopup = false;

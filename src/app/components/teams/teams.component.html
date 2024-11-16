@@ -3,7 +3,7 @@
 <div class="collection-grid">
   <div *ngFor="let item of teams" class="collection-block">
     <div class="collection-title">
-      <span class="collection">{{ item.teamTitle }}</span>
+      <span class="collection" (click)="toTeam(item)">{{ item.teamTitle }}</span>
       <span
         class="delete"
         nz-icon
@@ -40,6 +40,7 @@
 </div>
 
 <div class="popup" *ngIf="showPopup">
+  <h3>Add Team</h3>
   <input type="text" [(ngModel)]="addTeamRequest.teamTitle" placeholder="Title">
   <div class="users">
     <nz-select

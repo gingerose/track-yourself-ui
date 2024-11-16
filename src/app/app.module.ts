@@ -41,6 +41,7 @@ import {BaseCollectionItemComponent} from "./components/base-collection-item/bas
 import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzSpinModule} from "ng-zorro-antd/spin";
 import {TeamsComponent} from "./components/teams/teams.component";
+import {TeamTasksComponent} from "./components/team-tasks/team-tasks.component";
 
 
 registerLocaleData(en);
@@ -58,6 +59,7 @@ registerLocaleData(en);
     MainComponent,
     CollectionsComponent,
     TeamsComponent,
+    TeamTasksComponent,
     CollectionItemsComponent,
     HabitsComponent,
     NotesComponent,

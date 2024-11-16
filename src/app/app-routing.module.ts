@@ -16,6 +16,7 @@ import {ScheduleComponent} from "./components/schedule/schedule.component";
 import {PlansItemComponent} from "./components/plan-item/plan-item.component";
 import {BaseCollectionItemComponent} from "./components/base-collection-item/base-collection-item.component";
 import {TeamsComponent} from "./components/teams/teams.component";
+import {TeamTasksComponent} from "./components/team-tasks/team-tasks.component";
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: 'notes/:noteId', component: NoteItemComponent },
       { path: 'statistic', component: StatisticComponent },
       { path: 'teams', component: TeamsComponent },
+      { path: 'teams/:teamId/tasks', component: TeamTasksComponent },
     ]},
   { path: '', pathMatch: 'full', redirectTo: '/sign-up' },
 ];

@@ -42,12 +42,12 @@ export class SidebarComponent {
 
     this.links = [
       {name: "PLANNING", link: "/user/plans", icon: "schedule"},
-      {name: "SCHEDULE", link: "/user/schedule", icon: "schedule"},
+      {name: "SCHEDULE", link: "/user/schedule", icon: "fund-projection-screen"},
       {name: "COLLECTIONS", link: "/user/collections", icon: "group"},
       {name: "HABITS", link: "/user/habits", icon: "insert-row-above"},
       {name: "NOTES", link: "/user/notes", icon: "read"},
       {name: "STATISTICS", link: "/user/statistic", icon: "bar-chart"},
-      {name: "TEAMS", link: "/user/teams", icon: "bar-chart"}
+      {name: "TEAMS", link: "/user/teams", icon: "appstore-add"}
     ];
 
     this.user = authService.getUser();

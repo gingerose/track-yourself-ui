@@ -35,6 +35,7 @@ export const appLinks= {
   team: `${environment.aiServerUrl}/api/team`,
   task: `${environment.aiServerUrl}/api/task`,
   users: `${environment.aiServerUrl}/api/users`,
+  member: `${environment.aiServerUrl}/api/member`,
 }
 export const cld = new Cloudinary({
   cloud: {

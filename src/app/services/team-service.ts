@@ -3,8 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {appLinks} from "../app.links";
 import {Observable} from "rxjs";
 import {AddTeamRequest} from "../models/add-team-request";
-import {Team} from "../models/team";
-import {TeamTask} from "../models/team-task";
+import {Team, TeamMember, TeamTask} from "../models/team";
 import {User} from "../models/user";
 
 
@@ -16,8 +15,8 @@ export class TeamService {
   constructor(private http: HttpClient) {
   }
 
-  public addTeam(body: AddTeamRequest): Observable<any> {
-    return this.http.post(appLinks.team, body);
+  public addTeam(body: AddTeamRequest): Observable<Team> {
+    return this.http.post<Team>(appLinks.team, body);
   }
 
   public getTeamsByUserId(id: number): Observable<Team[]> {
@@ -40,8 +39,8 @@ export class TeamService {
     return this.http.post<TeamTask>(appLinks.task, body);
   }
 
-  public getTeamTasks(teamId: number): Observable<TeamTask[]> {
-    return this.http.get<TeamTask[]>(appLinks.team + '/tasks/' + teamId);
+  public getTeamTasks(teamId: number): Observable<TeamMember[]> {
+    return this.http.get<TeamMember[]>(appLinks.team + '/tasks/' + teamId);
   }
 
   public updateTeamTask(body: TeamTask): Observable<TeamTask> {
@@ -54,5 +53,9 @@ export class TeamService {
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(appLinks.users);
+  }
+
+  public updateMember(body: TeamMember): Observable<any> {
+    return this.http.put(appLinks.member + '/' + body.memberId, body);
   }
 }

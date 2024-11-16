@@ -9,4 +9,15 @@ export interface TeamMember {
   username: string;
   picture: string;
   isLead: boolean;
+  comment: string;
+  tasks: TeamTask[]
+
+}
+
+export interface TeamTask {
+  memberId: number;
+  taskId: number;
+  title: string;
+  date: Date;
+  status: string;
 }

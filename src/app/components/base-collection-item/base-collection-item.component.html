@@ -45,7 +45,10 @@
   </div>
 </div>
 
-<button class="add-button" (click)="generateRecommendation()">
-  <span>Generate recommendations</span>
-</button>
+<div class="button-container">
+  <button class="add-button" (click)="generateRecommendation()" [disabled]="isLoading">
+    <span>Generate recommendations</span>
+  </button>
+  <div *ngIf="isLoading" class="loading-spinner"></div>
+</div>
 

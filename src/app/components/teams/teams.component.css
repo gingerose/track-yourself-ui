@@ -13,8 +13,7 @@
 .collection-block {
   font-size: 20px;
   width: calc(43% - 40px);
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin-bottom: 60px;
   height: 300px;
   background: #FCFFFA;
   box-shadow: 5px 5px 15px #D5E8BA;
@@ -159,11 +158,11 @@
 
 .h1 {
   font-style: normal;
-  font-weight: 500;
+  font-weight: 550;
   font-size: 40px;
+  line-height: 150%;
   color: #396C1D;
-  margin: 0;
-  margin-top: 3%;
+  margin-bottom: 2%;
 }
 
 .h2 {
@@ -279,7 +278,7 @@ button.add-button:hover {
 
 .popup {
   width: 500px;
-  height: 300px;
+  height: 250px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -297,7 +296,7 @@ button.add-button:hover {
 .priority{
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
@@ -335,4 +334,9 @@ nz-select {
   font-size: 12px;
   margin-top: 5px;
   text-align: center;
+}
+
+h3 {
+  color: #396C1D;
+  margin-bottom: 20px;
 }

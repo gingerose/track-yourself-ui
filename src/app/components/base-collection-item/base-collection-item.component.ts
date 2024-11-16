@@ -222,11 +222,13 @@ export class BaseCollectionItemComponent {
   }
 
   generateRecommendation() {
+    this.isLoading = true;
     this.recommendations = []
     this.baseCollectionRequest.watchedIds = this.items.map(item => item.itemId)
     this.collectionService.generateRecommendations(this.baseCollectionRequest).subscribe({
       next: (recommendations: Recommendation[]): void => {
         this.recommendations = recommendations
+        this.isLoading = false;
       }
     });
   }

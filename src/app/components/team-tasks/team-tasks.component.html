@@ -1,0 +1,64 @@
+<p class="h1">Teams</p>
+
+<div class="team-container">
+  <h2 *ngIf="!isTitleEdit" (click)="toggleTitleEdit()">Title: {{ team.teamTitle }}</h2>
+  <input class="title" type="text" [(ngModel)]="newTitle" *ngIf="isTitleEdit" (keydown.enter)="updateTitle()"
+         (keydown.escape)="cancelTitleEdit()">
+  <div *ngFor="let member of members" class="member-block">
+    <div class="member-info">
+      <div class="member-name">{{ member.username }}</div>
+      <img [src]="getCloudinaryImage(member.picture)" alt="User Image" class="user-image"/>
+    </div>
+
+    <div class="tasks">
+      <div *ngFor="let task of member.tasks" class="task-item">
+        <div class="status-icon" (click)="toggleTaskStatus(task)">
+          <span nz-icon nzType="check" nzTheme="outline" *ngIf="task.status === 'DONE'"></span>
+        </div>
+        <div class="description">
+          <div class="task-title">
+          <span *ngIf="!isEditing(task)" (click)="startEditing(task)">{{ task.title }}</span>
+          <input *ngIf="isEditing(task)" [(ngModel)]="editedItem.title" (blur)="stopEditing(task)"
+                 (keydown.enter)="stopEditing(task)"/>
+          </div>
+        </div>
+        <span class="delete" nz-icon nzType="close-square" nzTheme="outline" (click)="deleteTask(task)"></span>
+      </div>
+    </div>
+
+    <div class="comments">
+      <div class="comments">
+  <textarea
+    [(ngModel)]="member.comment"
+    placeholder="Add comment..."
+    (blur)="saveComment(member)"
+  ></textarea>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<button class="add" (click)="openTaskPopup()">
+  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+</button>
+
+<div class="popup" *ngIf="showTaskPopup">
+  <h3>Add Task</h3>
+  <div class="users">
+    <nz-select
+      [(ngModel)]="selectedUser"
+      nzPlaceHolder="Select Member"
+      nzShowSearch
+      nzAllowClear
+      (nzOnSearch)="onMemberSearch($event)"
+      (ngModelChange)="onSelectUser($event)"
+      [nzOptions]="memberOptions"
+    >
+    </nz-select>
+  </div>
+  <input type="text" [(ngModel)]="newTaskTitle" placeholder="Task Title"/>
+  <button class="add-button" (click)="addTask()">Add Task</button>
+  <button class="add-button" (click)="closeTaskPopup()">Cancel</button>
+</div>

@@ -53,4 +53,10 @@
   </div>
   <div class="right"></div>
 </div>
+
+<div class="notification" *ngIf="showNotification">
+  <p>The program collects data about user activity. Namely, about the latest changes in tasks. The data remains confidential.</p>
+  <button class="close-btn" (click)="closeNotification()">Close</button>
+</div>
+
 </body>

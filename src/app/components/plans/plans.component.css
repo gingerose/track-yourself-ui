@@ -1,4 +1,5 @@
 table {
+  margin-left: 5%;
   margin-top: 5%;
   border-collapse: collapse;
 }
@@ -100,7 +101,7 @@ td.blue {
 /* Удаление обводки для столбца описания */
 td:last-child {
   border: none;
-  background: none;
+  /*background: none;*/
 }
 
 td.green,
@@ -122,6 +123,8 @@ td.empty div {
 td.description {
   position: relative;
   width: 250px;
+  border-radius: 5px;
+  border: 2px solid white;
 }
 
 td.description input {
@@ -140,7 +143,7 @@ td.description input {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px;
-  z-index: 11;
+  z-index: 2;
 }
 
 .color-picker div {
@@ -220,9 +223,9 @@ button.add-button:hover {
 .add {
   background: none;
   border: none;
-  position: relative;
-  left: 650px;
-  margin-top: 20px;
+  left: 80%;
+  top: 92%;
+  position: fixed;
 }
 
 .add span {
@@ -418,6 +421,7 @@ button.add-button:hover {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 2%;
 }
 
 .legend-item {
@@ -457,7 +461,7 @@ button.add-button:hover {
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 10px solid;
-  z-index: -1;
+  z-index: 1;
 }
 
 .priority-low {
@@ -465,7 +469,7 @@ button.add-button:hover {
 }
 
 .priority-medium {
-  border-bottom-color: yellow;
+  border-bottom-color: #5ca8cc;
 }
 
 .priority-high {
@@ -481,6 +485,118 @@ td {
   position: relative;
 }
 
-.duration{
+.morning-background {
+  background-image: url('/assets/morning.png');
+  padding: 5px; /* Чтобы текст не примыкал к краям */
+  color: #ad7a44; /* Например, белый цвет текста для контраста */
+}
+
+.day-background {
+  background-image: url('/assets/day.png');
+  padding: 5px;
+  color: #964334;
+}
+
+.night-background {
+  background-image: url('/assets/night.png');
+  padding: 5px;
+  color: #fff;
+}
+
+.morning-background,
+.day-background,
+.night-background {
+  background-size: cover; /* Подгонка изображения под ширину ячейки */
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw; /* 50% ширины окна */
+  padding: 10px;
+  box-sizing: border-box; /* Чтобы padding не увеличивал размер */
+}
+
+/* Style for the loading bar */
+.loading-bar {
+  position: relative;
+  height: 10px;
+  background-color: #f3f3f3;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-top: 10%;
+}
+
+.loading-bar-inner {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #B3E2B1;
+  animation: loading-animation 2s infinite;
+}
+
+/* Animation for the loading bar */
+@keyframes loading-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.duration {
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 0;
+  height: 0;
   z-index: 1;
+}
+
+.triangle-green {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid green;
+}
+
+.triangle-blue {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #3d96a9;
+}
+
+.triangle-red {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid red;
+}
+
+.triangle-orange {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid orange;
+}
+
+.triangle-legend {
+  display: flex;
+  flex-direction: column;
+}
+
+.triangle-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.triangle-label {
+  margin-left: 10px;
 }

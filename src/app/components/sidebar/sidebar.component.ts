@@ -43,11 +43,12 @@ export class SidebarComponent {
     this.links = [
       {name: "PLANNING", link: "/user/plans", icon: "schedule"},
       {name: "SCHEDULE", link: "/user/schedule", icon: "fund-projection-screen"},
-      {name: "COLLECTIONS", link: "/user/collections", icon: "group"},
       {name: "HABITS", link: "/user/habits", icon: "insert-row-above"},
       {name: "NOTES", link: "/user/notes", icon: "read"},
+      {name: "TEAMS", link: "/user/teams", icon: "appstore-add"},
+      {name: "COLLECTIONS", link: "/user/collections", icon: "group"},
       {name: "STATISTICS", link: "/user/statistic", icon: "bar-chart"},
-      {name: "TEAMS", link: "/user/teams", icon: "appstore-add"}
+
     ];
 
     this.user = authService.getUser();
@@ -61,7 +62,7 @@ export class SidebarComponent {
     this.img = cld.image(this.user.picture);
 
     this.img
-      .resize(thumbnail().width(80).height(80).gravity(focusOn(FocusOn.face())))
+      .resize(thumbnail().width(90).height(90).gravity(focusOn(FocusOn.face())))
       .roundCorners(byRadius(100))
       .format('png');
   }

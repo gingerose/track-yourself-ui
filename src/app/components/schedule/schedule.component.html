@@ -24,6 +24,26 @@
     </div>
   </div>
 
+
+  <div class="color-legend">
+    <div class="legend-item">
+      <div class="triangle-green"></div>
+      <span class="triangle-label">- Low priority</span>
+    </div>
+    <div class="legend-item">
+      <div class="triangle-blue"></div>
+      <span class="triangle-label">- Medium priority</span>
+    </div>
+    <div class="legend-item">
+      <div class="triangle-orange"></div>
+      <span class="triangle-label">- High priority</span>
+    </div>
+    <div class="legend-item">
+      <div class="triangle-red"></div>
+      <span class="triangle-label">- Critical priority</span>
+    </div>
+  </div>
+
   <div *ngIf="!loading">
     <table>
       <thead>
@@ -46,6 +66,7 @@
               (mousedown)="toPlan($event, item)">
           <span class="priority-arrow" *ngIf="item.dayOfWeek === i + 1"
                 [ngClass]="getPriorityClass(item.priority)"></span>
+            <span class="duration" *ngIf="item.dayOfWeek === i + 1">{{item.duration}}</span>
             <span class="delay" *ngIf="getStatusColor(item, i + 1) === 'blue'">➞</span>
           </td>
         </ng-container>

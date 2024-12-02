@@ -6,4 +6,5 @@ export interface Schedule {
   dayOfWeek: number;
   priority: string;
   suggestedTime: string;
+  duration: number
 }

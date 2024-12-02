@@ -16,6 +16,7 @@ export class LoginComponent {
   toggle: boolean = true;
   error: boolean = false;
   message: string = "";
+  showNotification = true;
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +33,15 @@ export class LoginComponent {
     this.subscription.unsubscribe();
   }
 
+  closeNotification(): void {
+    this.showNotification = false;
+  }
+
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showNotification = false;
+    }, 30000);
+
     const options: AbstractControlOptions = {
       validators: PasswordMatch.matchingPasswords
     }

@@ -342,14 +342,14 @@ button.add-button:hover {
   text-align: center;
 }
 
-.search > div:first-child {
-  display: flex;
-  align-items: center;
-  height: 50px;
-  border-right: 2px solid rgba(57, 108, 29, 0.8);
-  padding-right: 10px;
-  margin-right: 10px;
-}
+/*.search > div:first-child {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  height: 50px;*/
+/*  border-right: 2px solid rgba(57, 108, 29, 0.8);*/
+/*  padding-right: 10px;*/
+/*  margin-right: 10px;*/
+/*}*/
 
 .search-icon{
   color: #396C1D;
@@ -468,7 +468,7 @@ button.add-button:hover {
 }
 
 .priority-medium {
-  border-bottom-color: yellow;
+  border-bottom-color: #5ca8cc;
 }
 
 .priority-high {
@@ -545,3 +545,59 @@ td {
 }
 
 
+.duration {
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+
+.triangle-green {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid green;
+}
+
+.triangle-blue {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #3d96a9;
+}
+
+.triangle-red {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid red;
+}
+
+.triangle-orange {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid orange;
+}
+
+.triangle-legend {
+  display: flex;
+  flex-direction: column;
+}
+
+.triangle-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.triangle-label {
+  margin-left: 10px;
+}
